@@ -126,6 +126,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    '/home/headline/webapps/static/',
+)
+
 try:
     from local_settings import *
 except ImportError:
