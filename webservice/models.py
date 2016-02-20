@@ -4,8 +4,19 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Country(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+
 class Subscriber(models.Model):
     uuid = models.CharField(max_length=100)
+    country = models.ManyToManyField(Country, blank=True)
 
     def __str__(self):
         return self.uuid
@@ -22,6 +33,7 @@ class Channel(models.Model):
     photo_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)
     twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
+    country = models.ManyToManyField(Country, blank=True)
 
     def __str__(self):
         return self.name

@@ -128,16 +128,16 @@ def pull_latest_status(count=200):
 def pull_title_and_images():
     filter_query = Q(url_title=None) | Q(url_title='') | Q(url_image=None) | Q(url_image='')
     url_without_title = News.objects.filter(filter_query).values_list('url', flat=True)
-    print '\nGetting %d news title & description...' % len(url_without_title)
+    # print '\nGetting %d news title & description...' % len(url_without_title)
 
     for url in url_without_title:
-        print url
+        # print url
         response = requests.get(url)
         if response:
             soup = bsoup(response.text, "html.parser")
 
             url_title = soup.title.string
-            print url_title
+            # print url_title
 
             url_description = None
             twitter_description = soup.find('meta', attrs={'property': 'twitter:description', 'content': True})
@@ -149,7 +149,7 @@ def pull_title_and_images():
                 url_description = og_description['content']
             elif meta_description:
                 url_description = meta_description['content']
-            print url_description
+            # print url_description
 
             url_image = None
             twitter_image = soup.find('meta', attrs={'property': 'twitter:image:src', 'content': True})
@@ -161,9 +161,9 @@ def pull_title_and_images():
             else:
                 images = soup.find_all('img')
                 url_image = get_biggest_images(images)
-            print url_image
-            print soup
-            print ''
+            # print url_image
+            # print soup
+            # print ''
 
             News.objects.filter(url=url).update(url_title=url_title, url_description=url_description)
             News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)

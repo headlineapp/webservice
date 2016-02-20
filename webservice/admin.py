@@ -1,7 +1,20 @@
 from django.contrib import admin
-from .models import Channel, News, Subscriber
+from .models import Channel, News, Subscriber, Country
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
+
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'get_number_of_channel', 'get_number_of_subscriber')
+
+    def get_number_of_channel(self, obj):
+        return Channel.objects.filter(country=obj).count()
+    get_number_of_channel.short_description = 'Channels'
+
+    def get_number_of_subscriber(self, obj):
+        return Subscriber.objects.filter(country=obj).count()
+    get_number_of_subscriber.short_description = 'Subcribers'
 
 
 def delete_all_news(modeladmin, request, queryset):
