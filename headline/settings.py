@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webservice'
+    'tastypie',
+    'django_cron',
+    'webservice',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -73,21 +75,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'headline.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'headline',
-        'USER': 'headline',
-        'PASSWORD': 'Indonesia01',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -112,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
@@ -129,6 +116,20 @@ STATIC_URL = 'http://static.getheadlineapp.com/'
 STATIC_ROOT = '/home/headline/webapps/static/'
 
 STATICFILES_DIRS = []
+
+
+# Twitter Keys
+
+TWITTER_CONSUMER_KEY = 'ar8ut3vqyOkjGBuj257idPYbZ'
+TWITTER_CONSUMER_SECRET = 'HGHaefEc9L61epYaAJUNXCAFzAaS9sHjV5HGVDWuVlXmFuMA95'
+TWITTER_ACCESS_TOKEN = '109322474-SpGAYCkxitsuXoABkYPJASuv5PVcMvGqPe0LWjmc'
+TWITTER_TOKEN_SECRET = 'YeKfnAJAs1Dq9ICHBWaWSMkaSiDCPAFMa8AOp2NhHSQMg'
+
+
+# Tastypie
+
+TASTYPIE_DEFAULT_FORMATS = ['json']
+
 
 try:
     from local_settings import *

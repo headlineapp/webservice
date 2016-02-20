@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from tastypie.api import Api
+
+from webservice.resources.channel import ChannelResource
+from webservice.resources.news import NewsResource
+from webservice.resources.subscription import SubscriptionsResource
+
+admin.site.site_title = 'Headline API'
+admin.site.site_header = 'Headline API'
+
+v1_api = Api(api_name='v1')
+v1_api.register(ChannelResource())
+v1_api.register(NewsResource())
+v1_api.register(SubscriptionsResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(v1_api.urls)),
 ]
