@@ -7,7 +7,7 @@ from tastypie.paginator import Paginator as AutoPaginator
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie.utils import trailing_slash
 from django.http import Http404
-from pagination import prepare_results
+from webservice.resources.pagination import prepare_results
 
 
 class ChannelResource(ModelResource):
