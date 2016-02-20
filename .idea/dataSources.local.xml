@@ -2,8 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Django default" uuid="dbe8bd45-db22-4809-a705-813ec6f5dc19">
-      <user-name>tokopedia</user-name>
-      <user-password>dfc3dfc4dfcedfc5dfc4dfcfdfd9dfc3dfcb</user-password>
+      <user-name>headline</user-name>
+      <user-password>dfe3dfc4dfcedfc5dfc4dfcfdfd9dfc3dfcbdf9adf9b</user-password>
       <schema-pattern>headline.pg_catalog headline.public</schema-pattern>
       <default-schemas>headline.public</default-schemas>
     </data-source>
