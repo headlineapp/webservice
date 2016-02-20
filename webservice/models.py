@@ -47,7 +47,7 @@ class News(models.Model):
     url = models.CharField(max_length=2083)
     url_title = models.CharField(max_length=500, null=True, blank=True)
     url_image = models.CharField(max_length=300, null=True, blank=True)
-    url_description = models.CharField(max_length=300, null=True, blank=True)
+    url_description = models.CharField(max_length=2000, null=True, blank=True)
     twitter_id = models.CharField(max_length=30)
     twitter_text = models.CharField(max_length=1200)
     twitter_favorite_count = models.IntegerField(null=True, blank=True)
