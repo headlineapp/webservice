@@ -131,6 +131,13 @@ TWITTER_TOKEN_SECRET = 'YeKfnAJAs1Dq9ICHBWaWSMkaSiDCPAFMa8AOp2NhHSQMg'
 TASTYPIE_DEFAULT_FORMATS = ['json']
 
 
+# Cron classes
+
+CRON_CLASSES = [
+    'webservice.cron.TwitterCronJob',
+]
+
+
 try:
     from local_settings import *
 except ImportError:
