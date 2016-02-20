@@ -2,9 +2,9 @@ from django.conf.urls import url
 from django.db.models import Count
 
 from webservice.models import *
+from pagination import prepare_results
 
-from .pagination import prepare_results
-from .channel import ChannelResource
+from channel import ChannelResource
 
 from tastypie import fields
 from tastypie.serializers import Serializer
