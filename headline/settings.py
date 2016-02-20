@@ -138,6 +138,20 @@ CRON_CLASSES = [
 ]
 
 
+# Database settings
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'headline',
+        'USER': 'headline',
+        'PASSWORD': 'Indonesia01',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
 try:
     from local_settings import *
 except ImportError:
