@@ -20,7 +20,7 @@ from headline.settings import \
 def pull_latest_status(count=200):
     channels = Channel.objects.all()
     for channel in channels:
-        screen_name = channel.screen_name
+        screen_name = channel.twitter_screen_name
 
         # print '\nFetching data from @%s...' % screen_name
 
@@ -115,7 +115,8 @@ def pull_latest_status(count=200):
 
         last_news = News.objects.filter(channel=channel).reverse().last()
         if last_news:
-            Channel.objects.filter(pk=channel.pk).update(twitter_since_id=last_news.twitter_id)
+            Channel.objects.filter(pk=channel.pk).update(twitter_since_id=last_news.twitter_id,
+                                                         twitter_last_date=last_news.twitter_date_posted)
 
         # print '%d saved & %d updated' % (number_of_new_news, number_of_updated_news)
 

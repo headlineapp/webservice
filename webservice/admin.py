@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Channel, News, Subscriber, Country
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
+from human_dates import time_ago_in_words
 
 
 @admin.register(Country)
@@ -31,11 +32,12 @@ class ChannelAdmin(admin.ModelAdmin):
                     'get_number_of_news_without_image',
                     'get_number_of_subscriber',
                     'get_url',
-                    'twitter_since_id')
+                    'get_last_tweet',
+                    'get_last_tweet_date')
     actions = [delete_all_news]
 
     def get_screen_name(self, obj):
-        return '@%s' % obj.screen_name
+        return '@%s' % obj.twitter_screen_name
     get_screen_name.short_description = 'Screen Name'
 
     def get_url(self, obj):
@@ -58,6 +60,17 @@ class ChannelAdmin(admin.ModelAdmin):
     def get_number_of_subscriber(self, obj):
         return obj.subscriber.count()
     get_number_of_subscriber.short_description = 'Subscriber'
+
+    def get_last_tweet(self, obj):
+        values = (obj.twitter_screen_name, obj.twitter_since_id, obj.twitter_since_id)
+        return '<a href="https://twitter.com/%s/status/%s" target="_blank">%s</a>' % values
+    get_last_tweet.short_description = 'Last News'
+    get_last_tweet.allow_tags = True
+
+    def get_last_tweet_date(self, obj):
+        naive = obj.twitter_last_date.replace(tzinfo=None)
+        return time_ago_in_words(naive)
+    get_last_tweet_date.short_description = 'Last News Date'
 
 
 @admin.register(News)
@@ -111,3 +124,4 @@ class SubscriberAdmin(admin.ModelAdmin):
         return '%d Channels<br>%s' % (number_of_subscriptions, channels_name)
     get_number_of_subscriptions.short_description = 'Subscriptions'
     get_number_of_subscriptions.allow_tags = True
+
