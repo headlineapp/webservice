@@ -2,9 +2,8 @@ from django.contrib import admin
 from .models import Channel, News, Subscriber, Country
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
-import humanize
-import datetime
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
@@ -70,8 +69,7 @@ class ChannelAdmin(admin.ModelAdmin):
 
     def get_last_tweet_date(self, obj):
         if obj.twitter_last_date:
-            date_posted = obj.twitter_last_date.replace(tzinfo=None)
-            return humanize.naturaltime(date_posted - datetime.timedelta(seconds=60))
+            return naturaltime(obj.twitter_last_date)
         return None
     get_last_tweet_date.short_description = 'Last News Date'
 
