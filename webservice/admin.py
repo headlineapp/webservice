@@ -2,8 +2,9 @@ from django.contrib import admin
 from .models import Channel, News, Subscriber, Country
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
-from human_dates import time_ago_in_words
 
+import humanize
+import datetime
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
@@ -69,9 +70,8 @@ class ChannelAdmin(admin.ModelAdmin):
 
     def get_last_tweet_date(self, obj):
         if obj.twitter_last_date:
-            naive = obj.twitter_last_date.replace(second=0, microsecond=0)
-            naive = naive.replace(tzinfo=None)
-            return time_ago_in_words(naive)
+            date_posted = obj.twitter_last_date.replace(tzinfo=None)
+            return humanize.naturaltime(date_posted - datetime.timedelta(seconds=60))
         return None
     get_last_tweet_date.short_description = 'Last News Date'
 
@@ -127,4 +127,5 @@ class SubscriberAdmin(admin.ModelAdmin):
         return '%d Channels<br>%s' % (number_of_subscriptions, channels_name)
     get_number_of_subscriptions.short_description = 'Subscriptions'
     get_number_of_subscriptions.allow_tags = True
+
 
