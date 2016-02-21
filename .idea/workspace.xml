@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea9ee898-194d-4c9d-8f74-8f80faeee60b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/admin.py" afterPath="$PROJECT_DIR$/webservice/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/models.py" afterPath="$PROJECT_DIR$/webservice/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/twitter/pull_data.py" afterPath="$PROJECT_DIR$/webservice/twitter/pull_data.py" />
     </list>
     <ignored path="headline.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -142,8 +139,8 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webservice/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5431472">
-              <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.6751269">
+              <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -186,7 +183,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0740743">
+            <state vertical-scroll-proportion="-10.0">
               <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
               <folding>
                 <element signature="e#25#64#0" expanded="true" />
@@ -1110,7 +1107,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webservice/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0740743">
+        <state vertical-scroll-proportion="-10.0">
           <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
           <folding>
             <element signature="e#25#64#0" expanded="true" />
@@ -1120,8 +1117,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webservice/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5431472">
-          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.6751269">
+          <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
