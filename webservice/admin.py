@@ -69,7 +69,8 @@ class ChannelAdmin(admin.ModelAdmin):
 
     def get_last_tweet_date(self, obj):
         if obj.twitter_last_date:
-            naive = obj.twitter_last_date.replace(tzinfo=None)
+            naive = obj.twitter_last_date.replace(second=0, microsecond=0)
+            naive = naive.replace(tzinfo=None)
             return time_ago_in_words(naive)
         return None
     get_last_tweet_date.short_description = 'Last News Date'
