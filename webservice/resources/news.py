@@ -13,7 +13,7 @@ from tastypie.utils import trailing_slash
 
 
 class NewsResource(ModelResource):
-    channel = fields.ForeignKey(ChannelResource, 'channel')
+    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
 
     class Meta:
         queryset = News.objects.all()
