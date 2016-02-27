@@ -9,7 +9,8 @@ from tastypie import fields
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie.utils import trailing_slash
-from datetime import datetime
+
+import datetime
 
 
 class NewsResource(ModelResource):
