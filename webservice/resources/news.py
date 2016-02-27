@@ -44,7 +44,7 @@ class NewsResource(ModelResource):
     def get_trending_news(self, request, **kwargs):
         self.method_check(request, allowed=['get'])
         yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-        news = News.objects.filter(twitter_date_posted__gte=yesterday).order_by('twitter_favorite_count', 'twitter_retweet_count')
+        news = News.objects.filter(twitter_date_posted__gte=yesterday).order_by('-twitter_retweet_count', '-twitter_favorite_count')
         results = prepare_results(self, request, news)
         return self.create_response(request, results)
 
