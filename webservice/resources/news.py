@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.db.models import Sum, F
 
 from webservice.models import *
 
@@ -44,7 +45,9 @@ class NewsResource(ModelResource):
     def get_trending_news(self, request, **kwargs):
         self.method_check(request, allowed=['get'])
         yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-        news = News.objects.filter(twitter_date_posted__gte=yesterday).order_by('-twitter_retweet_count', '-twitter_favorite_count')
+        news = News.objects.filter(twitter_date_posted__gte=yesterday).\
+            annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
+            order_by('-score')
         results = prepare_results(self, request, news)
         return self.create_response(request, results)
 
