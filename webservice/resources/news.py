@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from django.db.models import Count
 
 from webservice.models import *
 
@@ -10,6 +9,7 @@ from tastypie import fields
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie.utils import trailing_slash
+from datetime import datetime
 
 
 class NewsResource(ModelResource):
@@ -42,7 +42,8 @@ class NewsResource(ModelResource):
 
     def get_trending_news(self, request, **kwargs):
         self.method_check(request, allowed=['get'])
-        news = News.objects.filter().annotate(num_submissions=Count('channel__subscriber')).order_by('-num_submissions')
+        yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+        news = News.objects.filter(twitter_date_posted__gte=yesterday).order_by('twitter_favorite_count', 'twitter_retweet_count')
         results = prepare_results(self, request, news)
         return self.create_response(request, results)
 
