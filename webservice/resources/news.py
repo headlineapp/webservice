@@ -29,7 +29,12 @@ class LatestNewsResource(ModelResource):
     def get_object_list(self, request):
         uuid = request.GET.get('uuid')
         channel = Channel.objects.filter(subscriber__uuid=uuid)
-        return super(LatestNewsResource, self).get_object_list(request).filter(channel__in=channel)
+        return super(LatestNewsResource, self).\
+            get_object_list(request).\
+            filter(channel__in=channel,
+                   url_title__isnull=False,
+                   url_image__isnull=False,
+                   url_description__isnull=False)
 
 
 class TrendingNewsResource(ModelResource):
@@ -48,7 +53,10 @@ class TrendingNewsResource(ModelResource):
         yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
         return super(TrendingNewsResource, self).\
             get_object_list(request).\
-            filter(twitter_date_posted__gte=yesterday).\
+            filter(twitter_date_posted__gte=yesterday,
+                   url_title__isnull=False,
+                   url_image__isnull=False,
+                   url_description__isnull=False).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
 
