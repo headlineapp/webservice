@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from webservice.twitter.pull_data import pull_latest_status, pull_title_and_images
 
 
