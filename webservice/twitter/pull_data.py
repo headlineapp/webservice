@@ -142,7 +142,9 @@ def pull_title_and_images():
         if response:
             soup = bsoup(response.text, "html.parser")
 
-            url_title = soup.title.string
+            url_title = None
+            if soup.title:
+                url_title = soup.title.string
             # print url_title
 
             url_description = None
