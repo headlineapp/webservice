@@ -170,7 +170,6 @@ def pull_title_and_images():
                 News.objects.filter(url=url).order_by('-twitter_date_posted').last().delete()
 
             news = News.objects.get(url=url)
-            url_title = news.url_title
             url_title = url_title.replace(' - %s', news.channel.name)
             url_title = url_title.replace(' | %s', news.channel.name)
             news.url_title = url_title

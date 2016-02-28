@@ -9,5 +9,6 @@ class Command(BaseCommand):
             url_title = news.url_title
             url_title = url_title.replace(' - %s', news.channel.name)
             url_title = url_title.replace(' | %s', news.channel.name)
+            print url_title
             news.url_title = url_title
             news.save()
