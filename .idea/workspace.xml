@@ -150,7 +150,7 @@
         <entry file="file://$PROJECT_DIR$/webservice/management/commands/clean_title.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.21377672">
-              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+              <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -1140,7 +1140,7 @@
     <entry file="file://$PROJECT_DIR$/webservice/management/commands/clean_title.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21377672">
-          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
