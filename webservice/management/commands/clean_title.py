@@ -4,7 +4,7 @@ from webservice.models import News
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        all_news = News.objects.all()
+        all_news = News.objects.filter(url_image__isnull=False)
         for news in all_news:
             url_title = news.url_title
             url_title = url_title.replace(' - %s', news.channel.name)
