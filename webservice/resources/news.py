@@ -14,6 +14,13 @@ from tastypie.utils import trailing_slash
 import datetime
 
 
+class NewsResource(ModelResource):
+    class Meta:
+        queryset = News.objects.all()
+        resource_name = 'news'
+        serializer = Serializer(formats=['json'])
+
+
 class LatestNewsResource(ModelResource):
     channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
 

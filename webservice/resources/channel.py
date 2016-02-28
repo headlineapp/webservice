@@ -20,16 +20,18 @@ class ChannelResource(ModelResource):
             'name' : ALL,
         }
 
-    def prepend_urls(self):
-        url_pattern = r"^(?P<resource_name>%s)/trending%s$" % (self._meta.resource_name, trailing_slash())
-        return [
-            url(url_pattern, self.wrap_view('get_trending_channel'), name="api_get_trending_channel"),
-        ]
 
-    def get_trending_channel(self, request, **kwargs):
-        self.method_check(request, allowed=['get'])
+class SubscriptionResource(ModelResource):
+    latest_news = fields.ToManyField('webservice.resources.news.NewsResource', 'latest_news', full=True)
 
-        channels = Channel.objects.all().order_by('subscriber')
-        object_list = prepare_results(self, request, channels)
+    class Meta:
+        queryset = Channel.objects.all()
+        resource_name = 'subscription'
+        serializer = Serializer(formats=['json'])
+        paginator_class = AutoPaginator
+        filtering = {
+            'name' : ALL,
+        }
 
-        return self.create_response(request, object_list)
+    def get_object_list(self, request):
+        return super(SubscriptionResource, self).get_object_list(request).all().order_by('subscriber')

@@ -8,7 +8,7 @@ from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie.utils import trailing_slash
 
 
-class SubscriptionsResource(ModelResource):
+class SubscriberResource(ModelResource):
     class Meta:
         queryset = Subscriber.objects.all()
         resource_name = 'subscriber'

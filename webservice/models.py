@@ -35,6 +35,7 @@ class Channel(models.Model):
     twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
     twitter_last_date = models.DateTimeField(null=True, blank=True)
     country = models.ManyToManyField(Country, blank=True)
+    latest_news = models.ManyToManyField('News', blank=True, related_name='latest_news')
 
     def __str__(self):
         return self.name

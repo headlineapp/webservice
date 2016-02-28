@@ -125,6 +125,11 @@ def pull_latest_status(count=200):
     # total = News.objects.filter(url_title__isnull=False, url_description__isnull=False).count()
     # print '\nDone. Currently we have %d news available to read.\n' % total
 
+        latest_news = News.objects.filter(channel=channel)[:2]
+        latest_news = list(latest_news)
+        channel.latest_news.add(*latest_news)
+        channel.save()
+
 
 def pull_title_and_images():
     filter_query = Q(url_title=None) | Q(url_title='') | Q(url_image=None) | Q(url_image='')
