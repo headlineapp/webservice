@@ -166,11 +166,18 @@ def pull_title_and_images():
             # print soup
             # print ''
 
-            News.objects.filter(url=url).update(url_title=url_title, url_description=url_description)
-            News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
-
             if News.objects.filter(url=url).count() > 1:
                 News.objects.filter(url=url).order_by('-twitter_date_posted').last().delete()
+
+            news = News.objects.get(url=url)
+            url_title = news.url_title
+            url_title = url_title.replace(' - %s', news.channel.name)
+            url_title = url_title.replace(' | %s', news.channel.name)
+            news.url_title = url_title
+            news.url_description = url_description
+            news.save()
+
+            News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
 
             # print News.objects.count()
 
