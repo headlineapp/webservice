@@ -18,7 +18,7 @@ from django.contrib import admin
 from tastypie.api import Api
 
 from webservice.resources.channel import ChannelResource
-from webservice.resources.news import NewsResource
+from webservice.resources.news import LatestNewsResource, TrendingNewsResource
 from webservice.resources.subscription import SubscriptionsResource
 
 admin.site.site_title = 'Headline API'
@@ -26,7 +26,8 @@ admin.site.site_header = 'Headline API'
 
 v1_api = Api(api_name='v1')
 v1_api.register(ChannelResource())
-v1_api.register(NewsResource())
+v1_api.register(LatestNewsResource())
+v1_api.register(TrendingNewsResource())
 v1_api.register(SubscriptionsResource())
 
 urlpatterns = [

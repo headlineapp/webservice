@@ -14,41 +14,42 @@ from tastypie.utils import trailing_slash
 import datetime
 
 
-class NewsResource(ModelResource):
+class LatestNewsResource(ModelResource):
     channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
 
     class Meta:
         queryset = News.objects.all()
-        resource_name = 'news'
+        resource_name = 'news/latest'
         serializer = Serializer(formats=['json'])
         filtering = {
             'channel' : ALL_WITH_RELATIONS,
             'pk' : ALL_WITH_RELATIONS,
         }
 
-    def prepend_urls(self):
-        url_latest_news = r"^(?P<resource_name>%s)/latest%s$" % (self._meta.resource_name, trailing_slash())
-        url_trending_news = r"^(?P<resource_name>%s)/trending%s$" % (self._meta.resource_name, trailing_slash())
-        return [
-            url(url_latest_news, self.wrap_view('get_latest_news'), name="api_get_latest_news"),
-            url(url_trending_news, self.wrap_view('get_trending_news'), name="api_get_trending_news"),
-        ]
-
-    def get_latest_news(self, request, **kwargs):
-        self.method_check(request, allowed=['get'])
+    def get_object_list(self, request):
         uuid = request.GET.get('uuid')
         channel = Channel.objects.filter(subscriber__uuid=uuid)
-        news = News.objects.filter(channel__in=channel)
-        results = prepare_results(self, request, news)
-        return self.create_response(request, results)
+        return super(LatestNewsResource, self).get_object_list(request).filter(channel__in=channel)
 
-    def get_trending_news(self, request, **kwargs):
-        self.method_check(request, allowed=['get'])
+
+class TrendingNewsResource(ModelResource):
+    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
+
+    class Meta:
+        queryset = News.objects.all()
+        resource_name = 'news/trending'
+        serializer = Serializer(formats=['json'])
+        filtering = {
+            'channel' : ALL_WITH_RELATIONS,
+            'pk' : ALL_WITH_RELATIONS,
+        }
+
+    def get_object_list(self, request):
         yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-        news = News.objects.filter(twitter_date_posted__gte=yesterday).\
+        return super(TrendingNewsResource, self).\
+            get_object_list(request).\
+            filter(twitter_date_posted__gte=yesterday).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
-        results = prepare_results(self, request, news)
-        return self.create_response(request, results)
 
 
