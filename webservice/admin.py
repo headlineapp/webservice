@@ -23,6 +23,12 @@ def delete_all_news(modeladmin, request, queryset):
     News.objects.all().delete()
 delete_all_news.short_description = "Delete news for selected channels"
 
+
+def delete_untitled_news(modeladmin, request, queryset):
+    News.objects.filter(url_title__isnull=True).delete()
+delete_all_news.short_description = "Delete untitled news for selected channels"
+
+
 @admin.register(Channel)
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('name',
@@ -34,7 +40,7 @@ class ChannelAdmin(admin.ModelAdmin):
                     'get_url',
                     'get_last_tweet',
                     'get_last_tweet_date')
-    actions = [delete_all_news]
+    actions = [delete_all_news, delete_untitled_news]
 
     def get_screen_name(self, obj):
         return '@%s' % obj.twitter_screen_name
