@@ -181,7 +181,7 @@ def pull_title_and_images():
             # print ''
 
             news = News.objects.get(url=url)
-            if url_title:
+            if url_title and url_description:
                 url_title = url_title.replace(' - %s' % news.channel.name, '')
                 url_title = url_title.replace(' | %s' % news.channel.name, '')
                 news.url_title = url_title
