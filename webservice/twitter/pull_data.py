@@ -179,8 +179,9 @@ def pull_title_and_images():
             # print soup
             # print ''
 
-            news_ids = News.objects.filter(url=url).order_by('-twitter_date_posted').first()
-            News.objects.exclude(pk__in=list(news_ids)).delete()
+            # Remove duplicate news
+            for news in News.objects.values_list('url', flat=True).distinct():
+                News.objects.filter(pk__in=News.objects.filter(url=url).values_list('id', flat=True)[1:]).delete()
 
             news = News.objects.get(url=url)
             if url_title:
