@@ -39,9 +39,9 @@ class LatestNewsResource(ModelResource):
         return super(LatestNewsResource, self).\
             get_object_list(request).\
             exclude(channel__in=channel,
-                    url_title__isnull=False,
-                    url_image__isnull=False,
-                    url_description__isnull=False)
+                    url_title__isnull=True,
+                    url_image__isnull=True,
+                    url_description__isnull=True)
 
 
 class TrendingNewsResource(ModelResource):
@@ -61,9 +61,9 @@ class TrendingNewsResource(ModelResource):
         return super(TrendingNewsResource, self).\
             get_object_list(request).\
             exclude(twitter_date_posted__gte=yesterday,
-                    url_title__isnull=False,
-                    url_image__isnull=False,
-                    url_description__isnull=False).\
+                    url_title__isnull=True,
+                    url_image__isnull=True,
+                    url_description__isnull=True).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
 
