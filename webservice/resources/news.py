@@ -17,7 +17,7 @@ import datetime
 class NewsResource(ModelResource):
     class Meta:
         queryset = News.objects.all()
-        resource_name = 'news'
+        resource_name = 'news/all'
         serializer = Serializer(formats=['json'])
 
 
