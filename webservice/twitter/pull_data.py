@@ -126,6 +126,11 @@ def pull_latest_status(count=200):
     # total = News.objects.filter(url_title__isnull=False, url_description__isnull=False).count()
     # print '\nDone. Currently we have %d news available to read.\n' % total
 
+        previous_latest_news = channel.latest_news
+        for latest_news in previous_latest_news:
+            channel.latest_news.remove(latest_news)
+            channel.save()
+
         latest_news = News.objects.filter(channel=channel)[:2]
         latest_news = list(latest_news)
         channel.latest_news.add(*latest_news)
