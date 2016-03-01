@@ -136,12 +136,6 @@ def pull_latest_status(count=200):
         channel.latest_news.add(*latest_news)
         channel.save()
 
-        last_news = News.objects.filter(channel=channel).reverse().last()
-        if last_news:
-            Channel.objects.filter(pk=channel.pk).update(twitter_since_id=last_news.twitter_id,
-                                                         twitter_last_date=last_news.twitter_date_posted)
-
-
 
 def pull_title_and_images():
     filter_query = Q(url_title=None) | Q(url_title='') | Q(url_image=None) | Q(url_image='')
@@ -185,8 +179,8 @@ def pull_title_and_images():
             # print soup
             # print ''
 
-            if News.objects.filter(url=url).count() > 1:
-                News.objects.filter(url=url).order_by('-twitter_date_posted').last().delete()
+            news_ids = News.objects.filter(url=url).order_by('-twitter_date_posted').first()
+            News.objects.exclude(pk__in=list(news_ids)).delete()
 
             news = News.objects.get(url=url)
             if url_title:
