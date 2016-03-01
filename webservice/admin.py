@@ -26,7 +26,7 @@ delete_all_news.short_description = "Delete news for selected channels"
 
 def delete_untitled_news(modeladmin, request, queryset):
     News.objects.filter(url_title__isnull=True).delete()
-delete_all_news.short_description = "Delete untitled news for selected channels"
+delete_untitled_news.short_description = "Delete untitled news for selected channels"
 
 
 @admin.register(Channel)
