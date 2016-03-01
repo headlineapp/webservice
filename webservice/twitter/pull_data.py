@@ -114,27 +114,28 @@ def pull_latest_status(count=200):
             # else:
                 # print 'failed saving url with status id %s' % status_id
 
+        # set latest news id and date
         last_news = News.objects.filter(channel=channel).reverse().last()
         if last_news:
-            Channel.objects.filter(pk=channel.pk).update(twitter_since_id=last_news.twitter_id,
-                                                         twitter_last_date=last_news.twitter_date_posted)
+            channel.twitter_since_id = last_news.twitter_id
+            channel.twitter_last_date = last_news.twitter_date_posted
 
-        # print '%d saved & %d updated' % (number_of_new_news, number_of_updated_news)
-
-    # print '\nTotal %d news from twitter' % News.objects.count()
-
-    # total = News.objects.filter(url_title__isnull=False, url_description__isnull=False).count()
-    # print '\nDone. Currently we have %d news available to read.\n' % total
-
+        # remove all latest news
         previous_latest_news = channel.latest_news.all()
         for latest_news in previous_latest_news:
             channel.latest_news.remove(latest_news)
-            channel.save()
 
+        # add latest news
         latest_news = News.objects.filter(channel=channel)[:2]
         latest_news = list(latest_news)
         channel.latest_news.add(*latest_news)
+
         channel.save()
+
+
+def remove_duplicate_news():
+    for url in News.objects.values_list('url', flat=True).distinct():
+        News.objects.filter(pk__in=News.objects.filter(url=url).values_list('id', flat=True)[1:]).delete()
 
 
 def pull_title_and_images():
@@ -179,19 +180,18 @@ def pull_title_and_images():
             # print soup
             # print ''
 
-            # Remove duplicate news
-            for news in News.objects.values_list('url', flat=True).distinct():
-                News.objects.filter(pk__in=News.objects.filter(url=url).values_list('id', flat=True)[1:]).delete()
-
             news = News.objects.get(url=url)
             if url_title:
                 url_title = url_title.replace(' - %s' % news.channel.name, '')
                 url_title = url_title.replace(' | %s' % news.channel.name, '')
                 news.url_title = url_title
-            news.url_description = url_description
-            news.save()
+                news.url_description = url_description
+                news.save()
 
-            News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
+                News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
+
+            else:
+                news.delete()
 
             # print News.objects.count()
 

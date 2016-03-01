@@ -1,6 +1,9 @@
 from django_cron import CronJobBase, Schedule
 
-from webservice.twitter.pull_data import pull_latest_status, pull_title_and_images
+from webservice.twitter.pull_data import \
+    pull_latest_status, \
+    pull_title_and_images, \
+    remove_duplicate_news
 
 
 class TwitterCronJob(CronJobBase):
@@ -11,4 +14,5 @@ class TwitterCronJob(CronJobBase):
 
     def do(self):
         pull_latest_status()
+        remove_duplicate_news()
         pull_title_and_images()
