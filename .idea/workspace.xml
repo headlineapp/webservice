@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ea9ee898-194d-4c9d-8f74-8f80faeee60b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/cron.py" afterPath="$PROJECT_DIR$/webservice/cron.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/headline/settings.py" afterPath="$PROJECT_DIR$/headline/settings.py" />
     </list>
     <ignored path="headline.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,21 +103,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="news.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webservice/resources/news.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pull_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/twitter/pull_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="183" column="44" selection-start-line="183" selection-start-column="44" selection-end-line="183" selection-end-column="44" />
+            <state vertical-scroll-proportion="-8.481482">
+              <caret line="195" column="19" selection-start-line="195" selection-start-column="14" selection-end-line="195" selection-end-column="19" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -145,10 +135,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cron.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cron.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/cron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33284023">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
@@ -177,6 +167,16 @@
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/headline/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.57840234">
+              <caret line="162" column="50" selection-start-line="162" selection-start-column="50" selection-end-line="162" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -228,7 +228,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/headline/settings.py" />
         <option value="$PROJECT_DIR$/webservice/management/commands/clean_title.py" />
         <option value="$PROJECT_DIR$/webservice/models.py" />
         <option value="$PROJECT_DIR$/headline/urls.py" />
@@ -240,6 +239,7 @@
         <option value="$PROJECT_DIR$/webservice/admin.py" />
         <option value="$PROJECT_DIR$/webservice/resources/news.py" />
         <option value="$PROJECT_DIR$/webservice/cron.py" />
+        <option value="$PROJECT_DIR$/headline/settings.py" />
       </list>
     </option>
   </component>
@@ -279,8 +279,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1040,13 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headline/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/tastypie/fields.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4467005">
@@ -1097,16 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/twitter/pull_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="183" column="44" selection-start-line="183" selection-start-column="44" selection-end-line="183" selection-end-column="44" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webservice/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1133,24 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/management/commands/crawl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/management/commands/clean_title.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webservice/resources/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1171,11 +1136,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webservice/cron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33284023">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/twitter/pull_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.481482">
+          <caret line="195" column="19" selection-start-line="195" selection-start-column="14" selection-end-line="195" selection-end-column="19" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/management/commands/clean_title.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/management/commands/crawl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headline/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57840234">
+          <caret line="162" column="50" selection-start-line="162" selection-start-column="50" selection-end-line="162" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

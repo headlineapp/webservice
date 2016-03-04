@@ -153,6 +153,26 @@ DATABASES = {
 }
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/headline/logs/user/django.log',
+            },
+        },
+    'loggers': {
+        'django_cron': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
 try:
     from local_settings import *
 except ImportError:
