@@ -18,9 +18,8 @@ class NewsResource(ModelResource):
             'url_title': ALL,
         }
 
-
     def get_object_list(self, request):
-        return super(LatestNewsResource, self).\
+        return super(NewsResource, self).\
             get_object_list(request).\
             exclude(url_title__isnull=True,
                     url_image__isnull=True,
