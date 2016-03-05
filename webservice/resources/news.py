@@ -14,6 +14,10 @@ class NewsResource(ModelResource):
         queryset = News.objects.all()
         resource_name = 'news/all'
         serializer = Serializer(formats=['json'])
+        filtering = {
+            'url_title': ALL,
+        }
+
 
     def get_object_list(self, request):
         return super(LatestNewsResource, self).\
@@ -31,8 +35,8 @@ class LatestNewsResource(ModelResource):
         resource_name = 'news/latest'
         serializer = Serializer(formats=['json'])
         filtering = {
-            'channel' : ALL_WITH_RELATIONS,
-            'pk' : ALL_WITH_RELATIONS,
+            'channel': ALL_WITH_RELATIONS,
+            'pk': ALL_WITH_RELATIONS,
         }
 
     def get_object_list(self, request):
@@ -70,8 +74,8 @@ class TrendingNewsResource(ModelResource):
         resource_name = 'news/trending'
         serializer = Serializer(formats=['json'])
         filtering = {
-            'channel' : ALL_WITH_RELATIONS,
-            'pk' : ALL_WITH_RELATIONS,
+            'channel': ALL_WITH_RELATIONS,
+            'pk': ALL_WITH_RELATIONS,
         }
 
     def get_object_list(self, request):
