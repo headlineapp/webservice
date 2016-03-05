@@ -1,15 +1,10 @@
-from django.conf.urls import url
 from django.db.models import Sum, F
-
 from webservice.models import *
-
-from .pagination import prepare_results
 from .channel import ChannelResource
 
 from tastypie import fields
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
-from tastypie.utils import trailing_slash
 
 import datetime
 
@@ -35,13 +30,20 @@ class LatestNewsResource(ModelResource):
 
     def get_object_list(self, request):
         uuid = request.GET.get('uuid')
-        channel = Channel.objects.filter(subscriber__uuid=uuid)
-        return super(LatestNewsResource, self).\
-            get_object_list(request).\
-            exclude(channel__in=channel,
-                    url_title__isnull=True,
-                    url_image__isnull=True,
-                    url_description__isnull=True)
+        channel_id = request.GET.get('channel_id')
+        if uuid:
+            channel = Channel.objects.filter(subscriber__uuid=uuid)
+            return super(LatestNewsResource, self).\
+                get_object_list(request).\
+                exclude(channel__in=channel,
+                        url_title__isnull=True,
+                        url_image__isnull=True,
+                        url_description__isnull=True)
+        elif channel_id:
+            channel_id = request.GET.get('channel_id')
+            return super(LatestNewsResource, self).get_object_list(request).filter(channel__pk=channel_id)
+        else:
+            return super(LatestNewsResource, self).get_object_list(request).all()
 
 
 class TrendingNewsResource(ModelResource):
@@ -66,5 +68,4 @@ class TrendingNewsResource(ModelResource):
                     url_description__isnull=True).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
-
 

@@ -1,19 +1,14 @@
-from django.conf.urls import url
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
 from webservice.models import *
 from tastypie import fields
 from tastypie.serializers import Serializer
 from tastypie.paginator import Paginator as AutoPaginator
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
-from tastypie.utils import trailing_slash
-from django.http import Http404
-from .pagination import prepare_results
 
 
 class ChannelResource(ModelResource):
     class Meta:
         queryset = Channel.objects.all()
-        resource_name = 'channel'
+        resource_name = 'channel/all'
         serializer = Serializer(formats=['json'])
         paginator_class = AutoPaginator
         filtering = {
@@ -38,21 +33,3 @@ class SubscriptionResource(ModelResource):
             get_object_list(request).all().\
             order_by('subscriber')
 
-
-class ChannelNewsResource(ModelResource):
-    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
-
-    class Meta:
-        queryset = News.objects.all()
-        resource_name = 'channel/news'
-        serializer = Serializer(formats=['json'])
-        filtering = {
-            'channel' : ALL_WITH_RELATIONS,
-            'pk' : ALL_WITH_RELATIONS,
-        }
-
-    def get_object_list(self, request):
-        channel_id = request.GET.get('channel_id')
-        return super(ChannelNewsResource, self).\
-            get_object_list(request).\
-            filter(channel__pk=channel_id)
