@@ -19,11 +19,8 @@ class NewsResource(ModelResource):
         return super(LatestNewsResource, self).\
             get_object_list(request).\
             exclude(url_title__isnull=True,
-                    url_title='',
                     url_image__isnull=True,
-                    url_image='',
-                    url_description__isnull=True,
-                    url_description='')
+                    url_description__isnull=True)
 
 
 class LatestNewsResource(ModelResource):
@@ -47,16 +44,22 @@ class LatestNewsResource(ModelResource):
                 get_object_list(request).\
                 exclude(channel__in=channel,
                         url_title__isnull=True,
-                        url_title='',
                         url_image__isnull=True,
-                        url_image='',
-                        url_description__isnull=True,
-                        url_description='')
+                        url_description__isnull=True)
         elif channel_id:
             channel_id = request.GET.get('channel_id')
-            return super(LatestNewsResource, self).get_object_list(request).filter(channel__pk=channel_id)
+            return super(LatestNewsResource, self).\
+                get_object_list(request).\
+                filter(channel__pk=channel_id,
+                       url_title__isnull=False,
+                       url_image__isnull=False,
+                       url_description__isnull=False)
         else:
-            return super(LatestNewsResource, self).get_object_list(request).all()
+            return super(LatestNewsResource, self).\
+                get_object_list(request).\
+                exclude(url_title__isnull=True,
+                        url_image__isnull=True,
+                        url_description__isnull=True)
 
 
 class TrendingNewsResource(ModelResource):
@@ -77,11 +80,8 @@ class TrendingNewsResource(ModelResource):
             get_object_list(request).\
             exclude(twitter_date_posted__gte=yesterday,
                     url_title__isnull=True,
-                    url_title='',
                     url_image__isnull=True,
-                    url_image='',
-                    url_description__isnull=True,
-                    url_description='').\
+                    url_description__isnull=True).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
 
