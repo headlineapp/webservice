@@ -120,16 +120,6 @@ def pull_latest_status(count=200):
             channel.twitter_since_id = last_news.twitter_id
             channel.twitter_last_date = last_news.twitter_date_posted
 
-        # remove all latest news
-        previous_latest_news = channel.latest_news.all()
-        for latest_news in previous_latest_news:
-            channel.latest_news.remove(latest_news)
-
-        # add latest news
-        latest_news = News.objects.filter(channel=channel)[:2]
-        latest_news = list(latest_news)
-        channel.latest_news.add(*latest_news)
-
         channel.save()
 
 
@@ -215,3 +205,19 @@ def get_biggest_images(images):
                 biggest_photo_width = width
                 biggest_photo_url = image['src']
     return biggest_photo_url
+
+
+def update_channel_latest_news():
+    for channel in Channel.objects.all():
+        # remove all latest news
+        previous_latest_news = channel.latest_news.all()
+        for latest_news in previous_latest_news:
+            channel.latest_news.remove(latest_news)
+
+        # add latest news
+        latest_news = News.objects.filter(channel=channel,
+                                          url_title__isnull=False,
+                                          url_image__isnull=False,
+                                          url_description__isnull=False)[:2]
+        latest_news = list(latest_news)
+        channel.latest_news.add(*latest_news)
