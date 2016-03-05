@@ -34,4 +34,25 @@ class SubscriptionResource(ModelResource):
         }
 
     def get_object_list(self, request):
-        return super(SubscriptionResource, self).get_object_list(request).all().order_by('subscriber')
+        return super(SubscriptionResource, self).\
+            get_object_list(request).all().\
+            order_by('subscriber')
+
+
+class ChannelNewsResource(ModelResource):
+    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
+
+    class Meta:
+        queryset = News.objects.all()
+        resource_name = 'channel/news'
+        serializer = Serializer(formats=['json'])
+        filtering = {
+            'channel' : ALL_WITH_RELATIONS,
+            'pk' : ALL_WITH_RELATIONS,
+        }
+
+    def get_object_list(self, request):
+        channel_id = request.GET.get('channel_id')
+        return super(ChannelNewsResource, self).\
+            get_object_list(request).\
+            filter(channel__pk=channel_id)

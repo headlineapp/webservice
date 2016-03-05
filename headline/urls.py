@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from tastypie.api import Api
 
-from webservice.resources.channel import ChannelResource, SubscriptionResource
+from webservice.resources.channel import ChannelResource, SubscriptionResource, ChannelNewsResource
 from webservice.resources.news import NewsResource, LatestNewsResource, TrendingNewsResource
 from webservice.resources.subscriber import SubscriberResource
 
@@ -29,6 +29,7 @@ v1_api.register(NewsResource())
 v1_api.register(LatestNewsResource())
 v1_api.register(TrendingNewsResource())
 v1_api.register(ChannelResource())
+v1_api.register(ChannelNewsResource())
 v1_api.register(SubscriptionResource())
 v1_api.register(SubscriberResource())
 
