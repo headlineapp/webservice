@@ -41,7 +41,7 @@ delete_untitled_news.short_description = "Delete untitled news for selected chan
 @admin.register(Channel)
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('name',
-                    'get_screen_name',
+                    'category',
                     'get_number_of_news',
                     'get_number_of_news_without_title',
                     'get_number_of_news_without_image',
