@@ -1,7 +1,7 @@
 from webservice.models import *
 from tastypie.serializers import Serializer
-from tastypie.paginator import Paginator as AutoPaginator
-from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
+from tastypie.resources import ModelResource
+from tastypie.exceptions import BadRequest
 
 
 class SubscriberResource(ModelResource):
@@ -9,4 +9,12 @@ class SubscriberResource(ModelResource):
         queryset = Subscriber.objects.all()
         resource_name = 'subscriber'
         serializer = Serializer(formats=['json'])
-        paginator_class = AutoPaginator
+        always_return_data = True
+
+    def obj_create(self, bundle, request=None, **kwargs):
+        uuid = bundle.data['uuid']
+        if uuid:
+            bundle.obj = Subscriber.objects.get_or_create(uuid=uuid)[0]
+        else:
+            raise BadRequest('Bad request')
+        return bundle

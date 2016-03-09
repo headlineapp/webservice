@@ -70,7 +70,7 @@ class ChannelAdmin(admin.ModelAdmin):
     get_number_of_news_without_image.short_description = 'News W/O Image'
 
     def get_number_of_subscriber(self, obj):
-        return obj.subscriber.count()
+        return Subscriber.objects.filter(channel=obj).count()
     get_number_of_subscriber.short_description = 'Subscriber'
 
     def get_last_tweet(self, obj):
@@ -131,11 +131,7 @@ class SubscriberAdmin(admin.ModelAdmin):
     get_subscriber_id.short_description = 'ID'
 
     def get_number_of_subscriptions(self, obj):
-        channels = Channel.objects.filter(subscriber__uuid=obj.uuid).values_list('name', flat=True)
-        channels_name = '<br> '.join([str(x) for x in channels])
-        number_of_subscriptions = len(channels)
-        return '%d Channels<br>%s' % (number_of_subscriptions, channels_name)
+        return obj.channel.count()
     get_number_of_subscriptions.short_description = 'Subscriptions'
-    get_number_of_subscriptions.allow_tags = True
 
 

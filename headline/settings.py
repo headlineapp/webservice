@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tastypie',
+    'django_extensions',
     'django_cron',
     'webservice',
 ]

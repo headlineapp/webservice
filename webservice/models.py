@@ -15,8 +15,9 @@ class Country(models.Model):
 
 
 class Subscriber(models.Model):
-    uuid = models.CharField(max_length=100)
+    uuid = models.CharField(max_length=100, unique=True)
     country = models.ManyToManyField(Country, blank=True)
+    channel = models.ManyToManyField('Channel', blank=True)
 
     def __str__(self):
         return self.uuid
@@ -37,8 +38,7 @@ class Category(models.Model):
 
 class Channel(models.Model):
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category)
-    subscriber = models.ManyToManyField(Subscriber, blank=True)
+    category = models.ForeignKey(Category, blank=True, null=True)
     description = models.CharField(max_length=300)
     photo_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)

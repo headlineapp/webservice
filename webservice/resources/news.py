@@ -42,10 +42,11 @@ class LatestNewsResource(ModelResource):
         uuid = request.GET.get('uuid')
         channel_id = request.GET.get('channel_id')
         if uuid:
-            channel = Channel.objects.filter(subscriber__uuid=uuid)
+            subscriber = Subscriber.objects.get(uuid=uuid)
+            channels = subscriber.channel
             return super(LatestNewsResource, self).\
                 get_object_list(request).\
-                exclude(channel__in=channel,
+                exclude(channel__in=channels,
                         url_title__isnull=True,
                         url_image__isnull=True,
                         url_description__isnull=True)
