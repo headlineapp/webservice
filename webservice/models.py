@@ -37,7 +37,7 @@ class Category(models.Model):
 
 class Channel(models.Model):
     name = models.CharField(max_length=100)
-    # category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category)
     subscriber = models.ManyToManyField(Subscriber, blank=True)
     description = models.CharField(max_length=300)
     photo_url = models.CharField(max_length=300)
