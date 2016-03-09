@@ -25,8 +25,19 @@ class Subscriber(models.Model):
         ordering = ('pk',)
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+
 class Channel(models.Model):
     name = models.CharField(max_length=100)
+    category = models.ManyToManyField(Category)
     subscriber = models.ManyToManyField(Subscriber, blank=True)
     description = models.CharField(max_length=300)
     photo_url = models.CharField(max_length=300)

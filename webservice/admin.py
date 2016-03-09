@@ -1,8 +1,17 @@
 from django.contrib import admin
-from .models import Channel, News, Subscriber, Country
+from .models import Channel, News, Subscriber, Country, Category
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
 from django.contrib.humanize.templatetags.humanize import naturaltime
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+    def get_number_of_channel(self, obj):
+        return Channel.objects.filter(category=obj).count()
+    get_number_of_channel.short_description = 'Channels'
 
 
 @admin.register(Country)
