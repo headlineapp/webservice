@@ -52,7 +52,8 @@ class ChannelAdmin(admin.ModelAdmin):
     actions = [delete_all_news, delete_untitled_news]
 
     def get_category_name(self, obj):
-        return obj.category.name
+        # return obj.category.name
+        return ''
     get_category_name.short_description = 'Category'
 
     def get_url(self, obj):
