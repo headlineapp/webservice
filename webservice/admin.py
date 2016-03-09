@@ -41,7 +41,7 @@ delete_untitled_news.short_description = "Delete untitled news for selected chan
 @admin.register(Channel)
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('name',
-                    'category',
+                    'get_category_name',
                     'get_number_of_news',
                     'get_number_of_news_without_title',
                     'get_number_of_news_without_image',
@@ -51,9 +51,9 @@ class ChannelAdmin(admin.ModelAdmin):
                     'get_last_tweet_date')
     actions = [delete_all_news, delete_untitled_news]
 
-    def get_screen_name(self, obj):
-        return '@%s' % obj.twitter_screen_name
-    get_screen_name.short_description = 'Screen Name'
+    def get_category_name(self, obj):
+        return '@%s' % obj.category.name
+    get_category_name.short_description = 'Category'
 
     def get_url(self, obj):
         return '<a href="%s" target="_blank">%s</a>' % (obj.url, obj.url)
