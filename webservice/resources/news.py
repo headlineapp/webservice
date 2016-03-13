@@ -39,10 +39,10 @@ class LatestNewsResource(ModelResource):
         }
 
     def get_object_list(self, request):
-        uuid = request.GET.get('uuid')
+        IDFA = request.GET.get('IDFA')
         channel_id = request.GET.get('channel_id')
-        if uuid:
-            subscriber = Subscriber.objects.get(uuid=uuid)
+        if IDFA:
+            subscriber = Subscriber.objects.get(IDFA=IDFA)
             channels = subscriber.channel
             return super(LatestNewsResource, self).\
                 get_object_list(request).\

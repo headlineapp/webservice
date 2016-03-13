@@ -124,7 +124,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 @admin.register(Subscriber)
 class SubscriberAdmin(admin.ModelAdmin):
-    list_display = ('uuid', 'get_subscriber_id', 'get_number_of_subscriptions')
+    list_display = ('IDFA', 'get_subscriber_id', 'get_number_of_subscriptions')
 
     def get_subscriber_id(self, obj):
         return obj.pk

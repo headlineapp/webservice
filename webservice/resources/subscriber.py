@@ -12,14 +12,14 @@ class SubscriberResource(ModelResource):
         serializer = Serializer(formats=['json'])
         always_return_data = True
         filtering = {
-            'uuid': ALL,
+            'IDFA': ALL,
         }
 
 
     def obj_create(self, bundle, request=None, **kwargs):
-        uuid = bundle.data['uuid']
-        if uuid:
-            bundle.obj = Subscriber.objects.get_or_create(uuid=uuid)[0]
+        IDFA = bundle.data['IDFA']
+        if IDFA:
+            bundle.obj = Subscriber.objects.get_or_create(IDFA=IDFA)[0]
         else:
             raise BadRequest('Bad request')
         return bundle

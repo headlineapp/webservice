@@ -15,12 +15,12 @@ class Country(models.Model):
 
 
 class Subscriber(models.Model):
-    uuid = models.CharField(max_length=100, unique=True)
+    IDFA = models.CharField(max_length=100, unique=True)
     country = models.ManyToManyField(Country, blank=True)
     channel = models.ManyToManyField('Channel', blank=True)
 
     def __str__(self):
-        return self.uuid
+        return self.IDFA
 
     class Meta:
         ordering = ('pk',)
