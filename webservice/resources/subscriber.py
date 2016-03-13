@@ -2,6 +2,7 @@ from webservice.models import *
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource
 from tastypie.exceptions import BadRequest
+from tastypie.resources import ModelResource, ALL
 
 
 class SubscriberResource(ModelResource):
@@ -10,6 +11,10 @@ class SubscriberResource(ModelResource):
         resource_name = 'subscriber'
         serializer = Serializer(formats=['json'])
         always_return_data = True
+        filtering = {
+            'uuid': ALL,
+        }
+
 
     def obj_create(self, bundle, request=None, **kwargs):
         uuid = bundle.data['uuid']
