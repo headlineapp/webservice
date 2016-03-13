@@ -5,9 +5,10 @@ from tastypie.exceptions import BadRequest
 from tastypie.resources import ModelResource, ALL
 from tastypie import fields
 
-from urlparse import urlparse
+import urlparse
 
-class urlencodeSerializer(Serializer):
+
+class URLEncodeSerializer(Serializer):
     formats = ['json', 'jsonp', 'xml', 'yaml', 'html', 'plist', 'urlencode']
     content_types = {
         'json': 'application/json',
@@ -34,7 +35,7 @@ class SubscriberResource(ModelResource):
     class Meta:
         queryset = Subscriber.objects.all()
         resource_name = 'subscriber'
-        serializer = urlencodeSerializer()
+        serializer = URLEncodeSerializer()
         always_return_data = True
         filtering = {
             'IDFA': ALL,
