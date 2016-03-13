@@ -1,11 +1,14 @@
 from webservice.models import *
+from webservice.resources.channel import ChannelResource
 from tastypie.serializers import Serializer
-from tastypie.resources import ModelResource
 from tastypie.exceptions import BadRequest
 from tastypie.resources import ModelResource, ALL
+from tastypie import fields
 
 
 class SubscriberResource(ModelResource):
+    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
+
     class Meta:
         queryset = Subscriber.objects.all()
         resource_name = 'subscriber'
