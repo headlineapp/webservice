@@ -5,6 +5,7 @@ from tastypie.exceptions import BadRequest
 from tastypie.resources import ModelResource, ALL
 from tastypie import fields
 
+import urlparse
 
 class urlencodeSerializer(Serializer):
     formats = ['json', 'jsonp', 'xml', 'yaml', 'html', 'plist', 'urlencode']
