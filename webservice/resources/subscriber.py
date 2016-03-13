@@ -19,10 +19,10 @@ class SubscriberResource(ModelResource):
         }
 
 
-    def obj_create(self, bundle, request=None, **kwargs):
-        IDFA = bundle.data['IDFA']
-        if IDFA:
-            bundle.obj = Subscriber.objects.get_or_create(IDFA=IDFA)[0]
-        else:
-            raise BadRequest('Bad request')
-        return bundle
+    # def obj_create(self, bundle, request=None, **kwargs):
+    #     IDFA = bundle.data['IDFA']
+    #     if IDFA:
+    #         bundle.obj = Subscriber.objects.get_or_create(IDFA=IDFA)[0]
+    #     else:
+    #         raise BadRequest('Bad request')
+    #     return bundle
