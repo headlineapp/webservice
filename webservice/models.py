@@ -42,7 +42,7 @@ class Channel(models.Model):
     description = models.CharField(max_length=300)
     photo_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)
-    twitter_screen_name = models.CharField(max_length=100)
+    twitter_screen_name = models.CharField(max_length=100, default='')
     twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
     twitter_last_date = models.DateTimeField(null=True, blank=True)
     country = models.ManyToManyField(Country, blank=True)
