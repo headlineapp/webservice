@@ -12,7 +12,7 @@ class SubscriberResource(ModelResource):
     class Meta:
         queryset = Subscriber.objects.all()
         resource_name = 'subscriber'
-        serializer = Serializer(formats=['json', 'urlencode'])
+        serializer = Serializer(formats=['json'], content_types={'json': 'application/json'})
         always_return_data = True
         filtering = {
             'IDFA': ALL,
