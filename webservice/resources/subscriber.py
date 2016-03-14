@@ -18,7 +18,6 @@ class SubscriberResource(ModelResource):
             'IDFA': ALL,
         }
 
-
     def obj_create(self, bundle, request=None, **kwargs):
         IDFA = bundle.data['IDFA']
         if IDFA:
@@ -26,3 +25,30 @@ class SubscriberResource(ModelResource):
         else:
             raise BadRequest('Bad request')
         return bundle
+
+    def save_m2m(self, bundle):
+        for field_name, field_object in self.fields.items():
+            if not getattr(field_object, 'is_m2m', False):
+                continue
+
+            if not field_object.attribute:
+                continue
+
+            if field_object.readonly:
+                continue
+
+            related_mngr = getattr(bundle.obj, field_object.attribute)
+
+            related_objs = []
+
+            for related_bundle in bundle.data[field_name]:
+                channel, found = Channel.objects.get_or_create(pk=related_bundle.obj.pk)
+                if found:
+                    channel.delete()
+                else:
+                    channel = related_bundle.obj
+                    channel.save()
+
+                related_objs.append(channel)
+
+            related_mngr.add(*related_objs)
