@@ -101,8 +101,9 @@ def pull_latest_status(count=200):
                     if response.url:
                         # print response.url
                         news.url = response.url
-                        news.save()
                         number_of_new_news += 1
+
+                    news.save()
 
                 else:
                     news.twitter_favorite_count = favorite_count
