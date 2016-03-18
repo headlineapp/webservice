@@ -4,7 +4,7 @@ from webservice.models import News
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for row in News.objects.all():
-            if News.objects.filter(url=row.url).count() > 1:
-                row.delete()
+        for url in News.objects.values_list('url', flat=True).distinct():
+            News.objects.filter(pk__in=News.objects.filter(url=url).values_list('id', flat=True)[1:]).delete()
+            print url
         print News.objects.count()

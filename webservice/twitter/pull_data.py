@@ -86,6 +86,9 @@ def pull_latest_status(count=200):
                 # print 'created_at : %s' % created_at
                 # print 'json : %s' % json.dumps(status)
 
+                News.objects.filter(pk__in=News.objects.filter(url=url).values_list('id', flat=True)[1:]).delete()
+                News.objects.filter(pk__in=News.objects.filter(twitter_text=text).values_list('id', flat=True)[1:]).delete()
+
                 news, created = News.objects.get_or_create(url=url)
                 if created:
                     news.channel = channel
