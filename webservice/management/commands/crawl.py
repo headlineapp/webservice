@@ -8,6 +8,7 @@ from webservice.twitter.pull_data import \
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        remove_duplicate_news()
         pull_latest_status()
         remove_duplicate_news()
         pull_title_and_images()

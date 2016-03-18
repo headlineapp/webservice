@@ -15,6 +15,7 @@ class TwitterCronJob(CronJobBase):
     code = 'webservice.cron.twitter_cron_job'
 
     def do(self):
+        remove_duplicate_news()
         pull_latest_status()
         remove_duplicate_news()
         pull_title_and_images()
