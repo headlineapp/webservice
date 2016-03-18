@@ -180,8 +180,9 @@ def pull_title_and_images():
             if news_is_exist:
                 news = News.objects.get(url=url)
                 if url_title and url_description:
-                    url_title = url_title.replace(' - %s' % news.channel.name, '')
-                    url_title = url_title.replace(' | %s' % news.channel.name, '')
+                    if news.channel:
+                        url_title = url_title.replace(' - %s' % news.channel.name, '')
+                        url_title = url_title.replace(' | %s' % news.channel.name, '')
                     news.url_title = url_title
                     news.url_description = url_description
                     news.save()
