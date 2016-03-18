@@ -177,20 +177,17 @@ def pull_title_and_images():
             # print ''
 
             news_is_exist = News.objects.filter(url=url).exists()
-            if url_title and url_description:
-                url_title = url_title.replace(' - %s' % news.channel.name, '')
-                url_title = url_title.replace(' | %s' % news.channel.name, '')
-
-                if news_is_exist:
-                    news = News.objects.get(url=url)
+            if news_is_exist:
+                news = News.objects.get(url=url)
+                if url_title and url_description:
+                    url_title = url_title.replace(' - %s' % news.channel.name, '')
+                    url_title = url_title.replace(' | %s' % news.channel.name, '')
                     news.url_title = url_title
                     news.url_description = url_description
                     news.save()
-
-                News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
-
-            else:
-                news.delete()
+                    News.objects.filter(url=url, url_image__isnull=True).update(url_image=url_image)
+                else:
+                    news.delete()
 
             # print News.objects.count()
 
