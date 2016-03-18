@@ -22,6 +22,7 @@ class NewsResource(ModelResource):
         return super(NewsResource, self).\
             get_object_list(request).\
             exclude(url_title__isnull=True,
+                    url_title='',
                     url_image__isnull=True,
                     url_description__isnull=True)
 
@@ -48,6 +49,7 @@ class LatestNewsResource(ModelResource):
                 get_object_list(request).\
                 exclude(channel__in=channels,
                         url_title__isnull=True,
+                        url_title='',
                         url_image__isnull=True,
                         url_description__isnull=True)
         elif channel_id:
@@ -56,12 +58,14 @@ class LatestNewsResource(ModelResource):
                 get_object_list(request).\
                 filter(channel__pk=channel_id,
                        url_title__isnull=False,
+                       url_title='',
                        url_image__isnull=False,
                        url_description__isnull=False)
         else:
             return super(LatestNewsResource, self).\
                 get_object_list(request).\
                 exclude(url_title__isnull=True,
+                        url_title='',
                         url_image__isnull=True,
                         url_description__isnull=True)
 
@@ -82,10 +86,11 @@ class TrendingNewsResource(ModelResource):
         yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
         return super(TrendingNewsResource, self).\
             get_object_list(request).\
-            filter(twitter_date_posted__gte=yesterday,
-                   url_title__isnull=False,
-                   url_image__isnull=False,
-                   url_description__isnull=False).\
+            filter(twitter_date_posted__gte=yesterday).\
+            exclude(url_title__isnull=True,
+                    url_title='',
+                    url_image__isnull=True,
+                    url_description__isnull=True).\
             annotate(score=Sum(F('twitter_retweet_count')+F('twitter_favorite_count'))).\
             order_by('-score')
 
