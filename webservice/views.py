@@ -65,7 +65,7 @@ def update_history(request):
         History.objects.filter(subscriber=subscriber, news=news).\
             update(number_of_visit=number_of_visit, modified_date=now)
     return JsonResponse({
-        'subscriber':'/v1/subscriber/%s' % subscriber.pk,
+        'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
         'news':{
             'id':news.pk,
             'resource_uri':"/v1/news/latest/%s/" % news.pk,
@@ -104,7 +104,7 @@ def add_bookmark(request):
     bookmark, created = Bookmark.objects.get_or_create(subscriber=subscriber, news=news)
     channel = news.channel
     return JsonResponse({
-        'subscriber':'/v1/subscriber/%s' % subscriber.pk,
+        'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
         'news':{
             'id':news.pk,
             'resource_uri':"/v1/news/latest/%s/" % news.pk,
