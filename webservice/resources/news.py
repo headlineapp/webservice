@@ -10,6 +10,8 @@ import datetime
 
 
 class NewsResource(ModelResource):
+    channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
+
     class Meta:
         queryset = News.objects.all()
         resource_name = 'news/all'

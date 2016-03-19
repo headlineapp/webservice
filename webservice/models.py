@@ -77,3 +77,24 @@ class News(models.Model):
         ordering = ('-twitter_date_posted',)
         verbose_name_plural = 'News'
 
+
+class History(models.Model):
+    subscriber = models.ForeignKey(Subscriber)
+    news = models.ForeignKey(News)
+    number_of_visit = models.IntegerField()
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-modified_date',)
+        verbose_name_plural = 'Histories'
+
+
+class Bookmark(models.Model):
+    subscriber = models.ForeignKey(Subscriber)
+    news = models.ForeignKey(News)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created_date',)
+        verbose_name_plural = 'Bookmark'
