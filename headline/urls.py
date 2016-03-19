@@ -28,7 +28,7 @@ v1_api.register(BookmarkResource())
 v1_api.register(HistoryResource())
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/$', admin.site.urls),
     url(r'^v1/subscriber/detail/(?P<idfa>.*)/$', subscriber_detail),
     url(r'^v1/subscriber/action/subscribe-channel/$', subscribe_channel),
     url(r'^v1/subscriber/action/cancel-subscription/$', cancel_subscription),
