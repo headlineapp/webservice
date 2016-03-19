@@ -65,6 +65,7 @@ def update_history(request):
         History.objects.filter(subscriber=subscriber, news=news).\
             update(number_of_visit=number_of_visit, modified_date=now)
     return JsonResponse({
+        'id':history.pk,
         'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
         'news':{
             'id':news.pk,
