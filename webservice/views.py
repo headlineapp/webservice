@@ -143,7 +143,7 @@ def remove_bookmark(request):
     queryset = Bookmark.objects.filter(subscriber=subscriber, news=news)
     queryset.delete()
     if queryset.count() == 0:
-        return JsonResponse({'deleted':1})
+        return JsonResponse({'success':1})
     else:
-        return JsonResponse({'deleted':0})
+        return JsonResponse({'success':0})
 
