@@ -40,12 +40,11 @@ class LatestNewsResource(ModelResource):
         IDFA = request.GET.get('IDFA')
         channel_id = request.GET.get('channel_id')
         if IDFA:
-            subscriber = Subscriber.objects.get(IDFA=IDFA)
-            channels = subscriber.channel
+            channels = Subscriber.objects.filter(IDFA=IDFA).values_list('channel__id')
             return super(LatestNewsResource, self).\
                 get_object_list(request).\
-                exclude(channel__in=channels,
-                        url_title__isnull=True)
+                filter(channel__pk__in=channels,
+                       url_title__isnull=False)
         elif channel_id:
             channel_id = request.GET.get('channel_id')
             return super(LatestNewsResource, self).\
