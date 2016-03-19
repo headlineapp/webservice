@@ -104,6 +104,7 @@ def add_bookmark(request):
     bookmark, created = Bookmark.objects.get_or_create(subscriber=subscriber, news=news)
     channel = news.channel
     return JsonResponse({
+        'id':bookmark.pk,
         'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
         'news':{
             'id':news.pk,
