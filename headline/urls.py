@@ -21,9 +21,10 @@ admin.site.site_header = 'Headline API'
 v1_api = Api(api_name='v1')
 v1_api.register(NewsResource())
 v1_api.register(LatestNewsResource())
-v1_api.register(TrendingNewsResource())
+
 v1_api.register(ChannelResource())
-v1_api.register(SubscriberResource())
+v1_api.register(SubscriptionResource())
+
 v1_api.register(BookmarkResource())
 v1_api.register(HistoryResource())
 
