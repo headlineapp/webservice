@@ -35,6 +35,6 @@ class SubscriberResource(ModelResource):
         ]
 
     def subscriber_detail(self, request, **kwargs):
-        bundle = self.build_bundle(obj=Subscriber.objects.get(pk=1), request=request)
+        bundle = self.build_bundle(obj=Subscriber.objects.get(pk=5), request=request)
         return self.create_response(request, bundle)
 
