@@ -49,12 +49,6 @@ class LatestNewsResource(ModelResource):
                 get_object_list(request).\
                 filter(channel__pk__in=channels,
                        url_title__isnull=False)
-        elif channel_id:
-            channel_id = request.GET.get('channel_id')
-            return super(LatestNewsResource, self).\
-                get_object_list(request).\
-                filter(channel__pk=channel_id,
-                       url_title__isnull=False)
         else:
             return super(LatestNewsResource, self).\
                 get_object_list(request).\

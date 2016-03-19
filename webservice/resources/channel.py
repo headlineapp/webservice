@@ -12,7 +12,8 @@ class ChannelResource(ModelResource):
         serializer = Serializer(formats=['json'])
         paginator_class = AutoPaginator
         filtering = {
-            'name' : ALL,
+            'id': ALL,
+            'name': ALL,
         }
 
 
