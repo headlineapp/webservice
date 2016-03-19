@@ -17,7 +17,9 @@ class NewsResource(ModelResource):
         resource_name = 'news/all'
         serializer = Serializer(formats=['json'])
         filtering = {
+            'pk': ALL,
             'url_title': ALL,
+            'channel': ALL_WITH_RELATIONS,
         }
 
     def get_object_list(self, request):
