@@ -81,7 +81,7 @@ class News(models.Model):
 class History(models.Model):
     subscriber = models.ForeignKey(Subscriber)
     news = models.ForeignKey(News)
-    number_of_visit = models.IntegerField()
+    number_of_visit = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
