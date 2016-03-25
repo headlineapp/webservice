@@ -1,3 +1,4 @@
+import re
 import requests
 
 from django_cron import CronJobBase, Schedule
