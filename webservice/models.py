@@ -62,7 +62,7 @@ class Channel(models.Model):
 
 
 class News(models.Model):
-    channel = models.ForeignKey(Channel, blank=True, null=True)
+    channel = models.ForeignKey(Channel, blank=True, null=True, unique=True)
     url = models.CharField(max_length=2083)
     url_title = models.CharField(max_length=500, null=True, blank=True)
     url_image = models.CharField(max_length=300, null=True, blank=True)
