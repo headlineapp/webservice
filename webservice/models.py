@@ -42,6 +42,8 @@ class Category(models.Model):
 
 class Channel(models.Model):
     name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    tag_line = models.CharField(max_length=100)
     category = models.ForeignKey(Category)
     description = models.CharField(max_length=300)
     profile_image_url = models.CharField(max_length=300)
