@@ -5,4 +5,4 @@ from webservice.cron import TwitterCronJob
 class Command(BaseCommand):
     def handle(self, *args, **options):
         cron = TwitterCronJob()
-        cron.do()
+        cron.update_category()

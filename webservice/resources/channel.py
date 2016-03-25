@@ -30,7 +30,7 @@ class SubscriptionResource(ModelResource):
 
     def get_object_list(self, request):
         IDFA = request.GET.get('IDFA')
-        subscibed_ids = Subscriber.objects.filter(IDFA=IDFA).values_list('channel__pk')
+        subscribed_ids = Subscriber.objects.filter(IDFA=IDFA).values_list('channel__pk')
         return super(SubscriptionResource, self).\
             get_object_list(request).\
-            filter(pk__in=subscibed_ids)
+            filter(pk__in=subscribed_ids)

@@ -12,6 +12,7 @@ class Country(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = 'Countries'
 
 
 class Subscriber(models.Model):
@@ -28,19 +29,22 @@ class Subscriber(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    number_of_channel = models.IntegerField(default=0)
+    category_icon_url = models.CharField(max_length=300, default='')
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = 'Categories'
 
 
 class Channel(models.Model):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category)
     description = models.CharField(max_length=300)
-    photo_url = models.CharField(max_length=300)
+    profile_image_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)
     twitter_screen_name = models.CharField(max_length=100)
     twitter_since_id = models.CharField(max_length=30, null=True, blank=True)

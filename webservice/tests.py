@@ -1,9 +1,6 @@
 from django.test import TestCase
 from webservice.models import Channel
-from webservice.twitter.pull_data import \
-    pull_latest_status, \
-    pull_title_and_images, \
-    remove_duplicate_news
+from webservice.cron import TwitterCronJob
 
 
 class ChannelTest(TestCase):
@@ -12,9 +9,10 @@ class ChannelTest(TestCase):
         pass
 
     def test_load_channel(self):
-        pull_latest_status(count=10)
-        remove_duplicate_news()
-        pull_title_and_images()
+        cron = TwitterCronJob()
+        cron.pull_latest_status(count=10)
+        cron.remove_duplicate_news()
+        cron.pull_title_and_images()
 
     def tearDown(self):
         pass

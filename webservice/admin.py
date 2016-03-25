@@ -7,12 +7,12 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'number_of_channel', 'get_icon_url')
 
-    def get_number_of_channel(self, obj):
-        return Channel.objects.filter(category=obj).count()
-    get_number_of_channel.short_description = 'Channels'
-
+    def get_icon_url(self, obj):
+        return '<img src="%s" alt="%s" height="20" width="20">' % (obj.category_icon_url, obj.name)
+    get_icon_url.short_description = 'Icon URL'
+    get_icon_url.allow_tags = True
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
