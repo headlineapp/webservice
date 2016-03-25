@@ -46,10 +46,10 @@ class TwitterCronJob(CronJobBase):
         for category in categories:
             channels = Channel.objects.filter(category=category)
             number_of_channels = channels.count()
+            category.number_of_channel = number_of_channels
             if channels.first():
                 category_icon_url = channels.first().profile_image_url
-            category.number_of_channel = number_of_channels
-            category.category_icon_url = category_icon_url
+                category.category_icon_url = category_icon_url
             category.save()
 
     def update_news(self):
