@@ -43,8 +43,8 @@ class Category(models.Model):
 class Channel(models.Model):
     name = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
-    tagline = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    tag_line = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     description = models.CharField(max_length=300)
     profile_image_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)
