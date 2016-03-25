@@ -45,13 +45,13 @@ class Channel(models.Model):
     tag_line = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
-    category = models.ManyToManyField(Category, blank=True, related_name='category')
     twitter_screen_name = models.CharField(max_length=100)
-    twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
-    twitter_last_date = models.DateTimeField(null=True, blank=True)
     profile_image_url = models.CharField(max_length=300)
     url = models.CharField(max_length=300)
+    category = models.ManyToManyField(Category, blank=True, related_name='category')
     country = models.ManyToManyField(Country, blank=True)
+    twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
+    twitter_last_date = models.DateTimeField(null=True, blank=True)
     latest_news = models.ManyToManyField('News', blank=True, related_name='latest_news')
 
     def __str__(self):
