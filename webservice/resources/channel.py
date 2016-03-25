@@ -14,6 +14,7 @@ class ChannelResource(ModelResource):
         filtering = {
             'id': ALL,
             'name': ALL,
+            'category': ALL_WITH_RELATIONS,
         }
 
 

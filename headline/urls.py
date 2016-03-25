@@ -7,6 +7,7 @@ from webservice.resources.news import *
 from webservice.resources.subscriber import *
 from webservice.resources.bookmark import BookmarkResource
 from webservice.resources.history import HistoryResource
+from webservice.resources.category import CategoryResource
 
 from webservice.views import subscriber_detail, \
     subscribe_channel, \
@@ -27,6 +28,8 @@ v1_api.register(SubscriptionResource())
 
 v1_api.register(BookmarkResource())
 v1_api.register(HistoryResource())
+
+v1_api.register(CategoryResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
