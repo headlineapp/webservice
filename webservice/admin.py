@@ -49,10 +49,10 @@ class ChannelAdmin(admin.ModelAdmin):
                     'get_url',
                     'get_last_tweet',
                     'get_last_tweet_date')
+    list_filter = ('category',)
     actions = [delete_all_news, delete_untitled_news]
     exclude = ('latest_news', 'subscriber')
     search_fields = ['name']
-    list_filter = (('category', admin.RelatedOnlyFieldListFilter),)
 
     def get_url(self, obj):
         return '<a href="%s" target="_blank">%s</a>' % (obj.url, obj.url)
