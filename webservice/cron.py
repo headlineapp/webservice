@@ -151,7 +151,11 @@ class TwitterCronJob(CronJobBase):
         url_without_title = News.objects.filter(filter_query).values_list('url', flat=True)
 
         for url in url_without_title:
-            response = requests.get(url)
+            try:
+                response = requests.get(url)
+            except requests.exceptions.ConnectionError as e:
+                response = None
+
             if response:
                 soup = bsoup(response.text, "html.parser")
 
