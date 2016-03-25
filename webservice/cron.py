@@ -46,7 +46,8 @@ class TwitterCronJob(CronJobBase):
         for category in categories:
             channels = Channel.objects.filter(category=category)
             number_of_channels = channels.count()
-            category_icon_url = channels.first().profile_image_url
+            if channels.first():
+                category_icon_url = channels.first().profile_image_url
             category.number_of_channel = number_of_channels
             category.category_icon_url = category_icon_url
             category.save()
