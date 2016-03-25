@@ -11,5 +11,6 @@ class CategoryResource(ModelResource):
         serializer = Serializer(formats=['json'])
         paginator_class = AutoPaginator
         filtering = {
+            'id': ALL,
             'name': ALL,
         }
