@@ -41,7 +41,7 @@ delete_untitled_news.short_description = "Delete untitled news for selected chan
 @admin.register(Channel)
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('name',
-                    'category',
+                    'get_category',
                     'get_number_of_news',
                     'get_number_of_news_without_title',
                     'get_number_of_news_without_image',
@@ -53,6 +53,10 @@ class ChannelAdmin(admin.ModelAdmin):
     actions = [delete_all_news, delete_untitled_news]
     exclude = ('latest_news', 'subscriber')
     search_fields = ['name']
+
+    def get_category(self, obj):
+        return ','.join([category.name for category in obj.category.all()])
+    get_category.short_description = 'Category'
 
     def get_url(self, obj):
         return '<a href="%s" target="_blank">%s</a>' % (obj.url, obj.url)
