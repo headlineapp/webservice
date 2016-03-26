@@ -102,7 +102,7 @@ class TwitterCronJob(CronJobBase):
 
                 if 'RT' not in text \
                         and "@" not in text \
-                        and '#' not in text \
+                        # and '#' not in text \
                         and url is not None \
                         and url is not '' \
                         and is_quote_status is False \
