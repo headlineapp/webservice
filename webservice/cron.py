@@ -153,7 +153,7 @@ class TwitterCronJob(CronJobBase):
         for url in url_without_title:
             try:
                 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36'}
-                requests.get(url, headers=headers)
+                response = requests.get(url, headers=headers)
             except requests.exceptions.ConnectionError as e:
                 response = None
 
