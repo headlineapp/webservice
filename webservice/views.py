@@ -83,7 +83,7 @@ def update_history(request):
                 'description':channel.description,
                 'id':channel.pk,
                 'name':channel.name,
-                'photo_url':channel.photo_url,
+                'photo_url':channel.profile_image_url,
                 'resource_uri':'/v1/channel/all/%s/' % channel.pk,
                 'twitter_last_date':channel.twitter_last_date,
                 'twitter_screen_name':channel.twitter_screen_name,
