@@ -12,7 +12,7 @@ def subscriber_detail(request, idfa):
     user = res.obj_get(request_bundle, IDFA=idfa)
 
     user_bundle = res.build_bundle(request=request, obj=user)
-    user_json = res.serialize(None, res.full_dehydrate(user_bundle), "application/json")
+    user_json = res.serialize(request, res.full_dehydrate(user_bundle), "application/json")
 
     return HttpResponse(user_json, content_type='application/json')
 
@@ -29,7 +29,7 @@ def subscribe_channel(request):
     user.channel.add(channel)
 
     user_bundle = res.build_bundle(request=request, obj=user)
-    user_json = res.serialize(None, res.full_dehydrate(user_bundle), "application/json")
+    user_json = res.serialize(request, res.full_dehydrate(user_bundle), "application/json")
 
     return HttpResponse(user_json, content_type='application/json')
 

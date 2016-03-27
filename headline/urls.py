@@ -36,11 +36,11 @@ v1_api.register(SubscriberResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(v1_api.urls)),
     url(r'^v1/subscriber/detail/(?P<idfa>.*)/$', subscriber_detail),
     url(r'^v1/subscriber/action/subscribe-channel/$', subscribe_channel),
     url(r'^v1/subscriber/action/cancel-subscription/$', cancel_subscription),
     url(r'^v1/news/action/update-history/$', update_history),
     url(r'^v1/news/action/add-bookmark/$', add_bookmark),
     url(r'^v1/news/action/remove-bookmark/$', remove_bookmark),
+    url(r'^', include(v1_api.urls)),
 ]
