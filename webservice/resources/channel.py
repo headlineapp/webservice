@@ -7,7 +7,7 @@ from webservice.resources.category import CategoryResource
 
 
 class ChannelResource(ModelResource):
-    category = fields.ToOneField(CategoryResource, 'category', full=True)
+    category = fields.ToManyField(CategoryResource, 'category', full=True)
 
     class Meta:
         queryset = Channel.objects.all()
