@@ -20,14 +20,14 @@ number_of_products = 0
 
 while (number_of_products < 400000):
     url = 'http://ace.tokopedia.com/search/v1/product/?image_size=700&image_square=false&start=%d&rows=100&sc=78,79&ob=8' % (number_of_products)
-    print url
+    # print url
     try:
         response = urllib2.urlopen(url)
         data = json.load(response)
 
         if data['status']['message'] != "OK":
-            print url
-            print data['status']
+            # print url
+            # print data['status']
 
         for product in data['data']:
             product_id = product['id']
@@ -38,10 +38,10 @@ while (number_of_products < 400000):
             writer.writerow([product_name, product_image_uri, product_id, product_price, product_condition])
             number_of_products += 1
 
-        print "total %d products downloaded" % number_of_products
+        # print "total %d products downloaded" % number_of_products
 
     except urllib2.HTTPError, error:
-        print "error downloading products from url %s" % url
+        # print "error downloading products from url %s" % url
         pass
 
 print "download complete. %d products downloaded." % number_of_products
