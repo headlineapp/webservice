@@ -27,6 +27,9 @@ class SubscriptionResource(ModelResource):
         resource_name = 'subscriptions'
         serializer = Serializer(formats=['json'])
         paginator_class = AutoPaginator
+        filtering = {
+            'id': ALL,
+        }
 
     def get_object_list(self, request):
         IDFA = request.GET.get('IDFA')
