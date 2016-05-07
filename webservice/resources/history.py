@@ -22,7 +22,7 @@ class HistoryResource(ModelResource):
         }
 
     def get_object_list(self, request):
-        return super(NewsResource, self).\
+        return super(HistoryResource, self).\
             get_object_list(request).\
             distinct('news__id').\
             exclude(url_title__isnull=True)
