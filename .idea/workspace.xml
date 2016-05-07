@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea9ee898-194d-4c9d-8f74-8f80faeee60b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/resources/subscriber.py" afterPath="$PROJECT_DIR$/webservice/resources/subscriber.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/models.py" afterPath="$PROJECT_DIR$/webservice/models.py" />
     </list>
     <ignored path="headline.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -144,10 +144,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subscriber.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="subscriber.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/resources/subscriber.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44378698">
+            <state vertical-scroll-proportion="0.0">
               <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -156,11 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webservice/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.42159763">
+              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -235,7 +235,6 @@
         <option value="$PROJECT_DIR$/webservice/management/commands/update_category.py" />
         <option value="$PROJECT_DIR$/webservice/admin.py" />
         <option value="$PROJECT_DIR$/webservice/cron.py" />
-        <option value="$PROJECT_DIR$/webservice/models.py" />
         <option value="$PROJECT_DIR$/headline/urls.py" />
         <option value="$PROJECT_DIR$/fetch.py" />
         <option value="$PROJECT_DIR$/webservice/resources/channel.py" />
@@ -244,6 +243,7 @@
         <option value="$PROJECT_DIR$/headline/settings.py" />
         <option value="$PROJECT_DIR$/webservice/resources/history.py" />
         <option value="$PROJECT_DIR$/webservice/resources/subscriber.py" />
+        <option value="$PROJECT_DIR$/webservice/models.py" />
       </list>
     </option>
   </component>
@@ -1125,21 +1125,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webservice/resources/subscriber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44378698">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42159763">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
