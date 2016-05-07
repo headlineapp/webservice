@@ -33,7 +33,7 @@ class Subscription(models.Model):
         return self.user.IDFA
 
     class Meta:
-        ordering = ('pk',)
+        ordering = ('channel__name',)
 
 
 class Category(models.Model):
