@@ -10,6 +10,7 @@ class UserResource(ModelResource):
         resource_name = 'user'
         serializer = Serializer(formats=['json'])
         always_return_data = True
+        allowed_methods = ['get', 'post']
         authorization = Authorization()
         filtering = {
             'IDFA': ALL,
