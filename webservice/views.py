@@ -6,67 +6,21 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 
-def subscriber_detail(request, idfa):
-    res = UserResource()
-    request_bundle = res.build_bundle(request=request)
-    user = res.obj_get(request_bundle, IDFA=idfa)
-
-    user_bundle = res.build_bundle(request=request, obj=user)
-    user_json = res.serialize(request, res.full_dehydrate(user_bundle), "application/json")
-
-    return HttpResponse(user_json, content_type='application/json')
-
-
-@csrf_exempt
-def subscribe_channel(request):
-    res = UserResource()
-    request_bundle = res.build_bundle(request=request)
-
-    idfa = request.POST.get('IDFA')
-    channel_id = request.POST.get('channel_id')
-    user = res.obj_get(request_bundle, IDFA=idfa)
-    channel = Channel.objects.get(pk=channel_id)
-    user.channel.add(channel)
-
-    user_bundle = res.build_bundle(request=request, obj=user)
-    user_json = res.serialize(request, res.full_dehydrate(user_bundle), "application/json")
-
-    return HttpResponse(user_json, content_type='application/json')
-
-
-@csrf_exempt
-def cancel_subscription(request):
-    res = UserResource()
-    request_bundle = res.build_bundle(request=request)
-
-    IDFA = request.POST.get('IDFA')
-    channel_id = request.POST.get('channel_id')
-    user = res.obj_get(request_bundle, IDFA=IDFA)
-    channel = Channel.objects.get(pk=channel_id)
-    user.channel.remove(channel)
-
-    user_bundle = res.build_bundle(request=request, obj=user)
-    user_json = res.serialize(None, res.full_dehydrate(user_bundle), "application/json")
-
-    return HttpResponse(user_json, content_type='application/json')
-
-
 @csrf_exempt
 def update_history(request):
     IDFA = request.POST.get('IDFA')
     news_id = request.POST.get('news_id')
-    subscriber = User.objects.get(IDFA=IDFA)
+    user = User.objects.get(IDFA=IDFA)
     news = News.objects.get(pk=news_id)
     channel = news.channel
-    history, created = History.objects.get_or_create(subscriber=subscriber, news=news)
+    history, created = History.objects.get_or_create(user=user, news=news)
     if history:
         number_of_visit = history.number_of_visit + 1
         now = datetime.datetime.now()
-        History.objects.filter(subscriber=subscriber, news=news).\
+        History.objects.filter(user=user, news=news).\
             update(number_of_visit=number_of_visit, modified_date=now)
     return JsonResponse({
         'id':history.pk,
-        'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
         'news':{
             'id':news.pk,
             'resource_uri':"/v1/news/latest/%s/" % news.pk,
@@ -100,13 +54,13 @@ def update_history(request):
 def add_bookmark(request):
     IDFA = request.POST.get('IDFA')
     news_id = request.POST.get('news_id')
-    subscriber = User.objects.get(IDFA=IDFA)
+    user = User.objects.get(IDFA=IDFA)
     news = News.objects.get(pk=news_id)
-    bookmark, created = Bookmark.objects.get_or_create(subscriber=subscriber, news=news)
+    bookmark, created = Bookmark.objects.get_or_create(user=user, news=news)
     channel = news.channel
     return JsonResponse({
         'id':bookmark.pk,
-        'subscriber':'/v1/subscriber/%s/' % subscriber.pk,
+        'user':'/v1/user/%s/' % user.pk,
         'news':{
             'id':news.pk,
             'resource_uri':"/v1/news/latest/%s/" % news.pk,
@@ -139,9 +93,9 @@ def add_bookmark(request):
 def remove_bookmark(request):
     IDFA = request.POST.get('IDFA')
     news_id = request.POST.get('news_id')
-    subscriber = Subscriber.objects.get(IDFA=IDFA)
+    user = User.objects.get(IDFA=IDFA)
     news = News.objects.get(pk=news_id)
-    queryset = Bookmark.objects.filter(subscriber=subscriber, news=news)
+    queryset = Bookmark.objects.filter(user=user, news=news)
     queryset.delete()
     if queryset.count() == 0:
         return JsonResponse({'is_success':1})
