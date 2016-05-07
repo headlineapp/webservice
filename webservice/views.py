@@ -7,7 +7,7 @@ from django.http import JsonResponse
 @csrf_exempt
 def update_history(request):
     IDFA = request.POST.get('IDFA')
-    return JsonResponse({'IDFA': IDFA})
+    return JsonResponse({'IDFA': request})
     # news_id = request.POST.get('news_id')
     # user = User.objects.get(IDFA=IDFA)
     # news = News.objects.get(pk=news_id)
