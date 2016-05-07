@@ -1,7 +1,6 @@
 from webservice.models import *
 from webservice.resources.channel import ChannelResource
 from tastypie.serializers import Serializer
-from tastypie.exceptions import BadRequest
 from tastypie.resources import ModelResource, ALL
 from tastypie import fields
 from tastypie.authorization import Authorization

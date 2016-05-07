@@ -17,8 +17,7 @@ class Country(models.Model):
 
 class Subscriber(models.Model):
     IDFA = models.CharField(max_length=100, null=False, blank=False, unique=True)
-    country = models.ManyToManyField(Country, null=True)
-    channel = models.ManyToManyField('Channel', null=True)
+    channel = models.ManyToManyField('Channel', null=True, blank=True)
 
     def __str__(self):
         return self.IDFA
