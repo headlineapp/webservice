@@ -25,7 +25,6 @@ v1_api.register(UserResource())
 v1_api.register(SubscriptionResource())
 
 v1_api.register(NewsResource())
-v1_api.register(LatestNewsResource())
 v1_api.register(BookmarkResource())
 v1_api.register(HistoryResource())
 
