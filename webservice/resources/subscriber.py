@@ -4,6 +4,7 @@ from tastypie.serializers import Serializer
 from tastypie.exceptions import BadRequest
 from tastypie.resources import ModelResource, ALL
 from tastypie import fields
+from tastypie.authorization import Authorization
 
 
 class SubscriberResource(ModelResource):
