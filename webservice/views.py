@@ -1,13 +1,13 @@
 import datetime
 from django.http import HttpResponse
-from webservice.resources.user import SubscriberResource
-from webservice.models import Subscriber, Channel, News, History, Bookmark
+from webservice.resources.user import UserResource
+from webservice.models import User, Channel, News, History, Bookmark
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 
 def subscriber_detail(request, idfa):
-    res = SubscriberResource()
+    res = UserResource()
     request_bundle = res.build_bundle(request=request)
     user = res.obj_get(request_bundle, IDFA=idfa)
 
@@ -19,7 +19,7 @@ def subscriber_detail(request, idfa):
 
 @csrf_exempt
 def subscribe_channel(request):
-    res = SubscriberResource()
+    res = UserResource()
     request_bundle = res.build_bundle(request=request)
 
     idfa = request.POST.get('IDFA')
@@ -36,7 +36,7 @@ def subscribe_channel(request):
 
 @csrf_exempt
 def cancel_subscription(request):
-    res = SubscriberResource()
+    res = UserResource()
     request_bundle = res.build_bundle(request=request)
 
     IDFA = request.POST.get('IDFA')
@@ -55,7 +55,7 @@ def cancel_subscription(request):
 def update_history(request):
     IDFA = request.POST.get('IDFA')
     news_id = request.POST.get('news_id')
-    subscriber = Subscriber.objects.get(IDFA=IDFA)
+    subscriber = User.objects.get(IDFA=IDFA)
     news = News.objects.get(pk=news_id)
     channel = news.channel
     history, created = History.objects.get_or_create(subscriber=subscriber, news=news)
@@ -100,7 +100,7 @@ def update_history(request):
 def add_bookmark(request):
     IDFA = request.POST.get('IDFA')
     news_id = request.POST.get('news_id')
-    subscriber = Subscriber.objects.get(IDFA=IDFA)
+    subscriber = User.objects.get(IDFA=IDFA)
     news = News.objects.get(pk=news_id)
     bookmark, created = Bookmark.objects.get_or_create(subscriber=subscriber, news=news)
     channel = news.channel
