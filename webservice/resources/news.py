@@ -11,7 +11,7 @@ class NewsResource(ModelResource):
 
     class Meta:
         queryset = News.objects.all()
-        resource_name = 'news/all'
+        resource_name = 'news'
         serializer = Serializer(formats=['json'])
         filtering = {
             'id': ALL,
