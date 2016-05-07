@@ -2,13 +2,13 @@ from webservice.models import *
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource, ALL_WITH_RELATIONS
 from webservice.resources.news import NewsResource
-from webservice.resources.user import SubscriberResource
+from webservice.resources.user import UserResource
 from tastypie import fields
 from tastypie.authorization import Authorization
 
 
 class HistoryResource(ModelResource):
-    subscriber = fields.ForeignKey(SubscriberResource, 'subscriber', full=True)
+    user = fields.ForeignKey(UserResource, 'user', full=True)
     news = fields.ForeignKey(NewsResource, 'news', full=True)
 
     class Meta:

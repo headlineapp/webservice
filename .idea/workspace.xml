@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea9ee898-194d-4c9d-8f74-8f80faeee60b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/models.py" afterPath="$PROJECT_DIR$/webservice/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/resources/bookmark.py" afterPath="$PROJECT_DIR$/webservice/resources/bookmark.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webservice/resources/history.py" afterPath="$PROJECT_DIR$/webservice/resources/history.py" />
     </list>
     <ignored path="headline.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,6 +103,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="bookmark.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webservice/resources/bookmark.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="category.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/resources/category.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,12 +147,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="history.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="history.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webservice/resources/history.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="25" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.22189349">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,10 +169,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webservice/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46745563">
+            <state vertical-scroll-proportion="0.0">
               <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
               <folding />
             </state>
@@ -217,7 +232,6 @@
         <option value="$PROJECT_DIR$/headline/local_settings.py" />
         <option value="$PROJECT_DIR$/webservice/management/commands/remove_duplicate.py" />
         <option value="$PROJECT_DIR$/webservice/resources/History.py" />
-        <option value="$PROJECT_DIR$/webservice/resources/bookmark.py" />
         <option value="$PROJECT_DIR$/webservice/resources/news.py" />
         <option value="$PROJECT_DIR$/webservice/util.py" />
         <option value="$PROJECT_DIR$/webservice/twitter/pull_data.py" />
@@ -230,7 +244,6 @@
         <option value="$PROJECT_DIR$/webservice/views.py" />
         <option value="$PROJECT_DIR$/webservice/resources/category.py" />
         <option value="$PROJECT_DIR$/headline/settings.py" />
-        <option value="$PROJECT_DIR$/webservice/resources/history.py" />
         <option value="$PROJECT_DIR$/webservice/admin.py" />
         <option value="$PROJECT_DIR$/webservice/resources/subscriber.py" />
         <option value="$PROJECT_DIR$/webservice/resources/subscription.py" />
@@ -238,6 +251,8 @@
         <option value="$PROJECT_DIR$/webservice/resources/user.py" />
         <option value="$PROJECT_DIR$/headline/urls.py" />
         <option value="$PROJECT_DIR$/webservice/models.py" />
+        <option value="$PROJECT_DIR$/webservice/resources/bookmark.py" />
+        <option value="$PROJECT_DIR$/webservice/resources/history.py" />
       </list>
     </option>
   </component>
@@ -1026,16 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/resources/bookmark.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="38" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headline/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1067,14 +1072,6 @@
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webservice/resources/history.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,9 +1129,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webservice/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46745563">
+        <state vertical-scroll-proportion="0.0">
           <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/resources/bookmark.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webservice/resources/history.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22189349">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
