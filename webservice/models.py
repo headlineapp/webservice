@@ -94,7 +94,7 @@ class News(models.Model):
 
 
 class History(models.Model):
-    subscriber = models.ForeignKey(Subscriber)
+    user = models.ForeignKey(User)
     news = models.ForeignKey(News)
     number_of_visit = models.IntegerField(default=1)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -106,7 +106,7 @@ class History(models.Model):
 
 
 class Bookmark(models.Model):
-    subscriber = models.ForeignKey(Subscriber)
+    user = models.ForeignKey(User)
     news = models.ForeignKey(News)
     created_date = models.DateTimeField(auto_now_add=True)
 
