@@ -15,12 +15,22 @@ class Country(models.Model):
         verbose_name_plural = 'Countries'
 
 
-class Subscriber(models.Model):
+class User(models.Model):
     IDFA = models.CharField(max_length=100, null=False, blank=False, unique=True)
-    channel = models.ManyToManyField('Channel', null=True, blank=True)
 
     def __str__(self):
         return self.IDFA
+
+    class Meta:
+        ordering = ('pk',)
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(User)
+    channel = models.ForeignKey('Channel')
+
+    def __str__(self):
+        return self.user.IDFA
 
     class Meta:
         ordering = ('pk',)

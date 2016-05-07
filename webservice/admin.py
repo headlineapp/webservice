@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Channel, News, Subscriber, Country, Category, History, Bookmark
+from .models import User, Subscription, Channel, News, Country, Category, History, Bookmark
 from django.template.defaultfilters import truncatechars  # or truncatewords
 from pytz import timezone
 from django.contrib.humanize.templatetags.humanize import naturaltime
@@ -128,7 +128,7 @@ class NewsAdmin(admin.ModelAdmin):
     get_url_display.allow_tags = True
 
 
-@admin.register(Subscriber)
+@admin.register(User)
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = ('IDFA', 'get_subscriber_id', 'get_number_of_subscriptions')
 
@@ -137,7 +137,7 @@ class SubscriberAdmin(admin.ModelAdmin):
     get_subscriber_id.short_description = 'ID'
 
     def get_number_of_subscriptions(self, obj):
-        return obj.channel.count()
+        return Subscription.objects.filter(user=obj).count()
     get_number_of_subscriptions.short_description = 'Subscriptions'
 
 

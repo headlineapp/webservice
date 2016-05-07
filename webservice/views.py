@@ -1,6 +1,6 @@
 import datetime
 from django.http import HttpResponse
-from webservice.resources.subscriber import SubscriberResource
+from webservice.resources.user import SubscriberResource
 from webservice.models import Subscriber, Channel, News, History, Bookmark
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse

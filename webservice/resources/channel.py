@@ -19,21 +19,3 @@ class ChannelResource(ModelResource):
             'name': ALL,
             'category': ALL_WITH_RELATIONS,
         }
-
-
-class SubscriptionResource(ModelResource):
-    class Meta:
-        queryset = Channel.objects.all()
-        resource_name = 'subscriptions'
-        serializer = Serializer(formats=['json'])
-        paginator_class = AutoPaginator
-        filtering = {
-            'id': ALL,
-        }
-
-    def get_object_list(self, request):
-        IDFA = request.GET.get('IDFA')
-        subscribed_ids = Subscriber.objects.filter(IDFA=IDFA).values_list('channel__pk')
-        return super(SubscriptionResource, self).\
-            get_object_list(request).\
-            filter(pk__in=subscribed_ids)

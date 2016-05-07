@@ -2,7 +2,7 @@ from webservice.models import *
 from tastypie.serializers import Serializer
 from tastypie.resources import ModelResource, ALL_WITH_RELATIONS
 from webservice.resources.news import NewsResource
-from webservice.resources.subscriber import SubscriberResource
+from webservice.resources.user import SubscriberResource
 from tastypie import fields
 
 
