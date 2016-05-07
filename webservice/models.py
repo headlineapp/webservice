@@ -97,9 +97,7 @@ class News(models.Model):
 class History(models.Model):
     user = models.ForeignKey(User)
     news = models.ForeignKey(News)
-    number_of_visit = models.IntegerField(default=1)
     created_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('-modified_date',)

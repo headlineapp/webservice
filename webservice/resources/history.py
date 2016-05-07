@@ -20,3 +20,9 @@ class HistoryResource(ModelResource):
             'user': ALL_WITH_RELATIONS,
             'news': ALL_WITH_RELATIONS
         }
+
+    def get_object_list(self, request):
+        return super(NewsResource, self).\
+            get_object_list(request).\
+            distinct('news__id').\
+            exclude(url_title__isnull=True)
