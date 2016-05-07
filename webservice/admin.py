@@ -143,7 +143,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(History)
 class AdminHistory(admin.ModelAdmin):
-    list_display = ('news', 'user', 'number_of_visit', 'created_date', 'modified_date')
+    list_display = ('news', 'user', 'created_date')
 
 
 @admin.register(Bookmark)

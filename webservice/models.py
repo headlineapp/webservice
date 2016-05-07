@@ -100,7 +100,7 @@ class History(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('-modified_date',)
+        ordering = ('-created_date',)
         verbose_name_plural = 'Histories'
 
 
