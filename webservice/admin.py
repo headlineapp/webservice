@@ -23,7 +23,7 @@ class CountryAdmin(admin.ModelAdmin):
     get_number_of_channel.short_description = 'Channels'
 
     def get_number_of_subscriber(self, obj):
-        return Subscriber.objects.filter(country=obj).count()
+        return 0
     get_number_of_subscriber.short_description = 'Subcribers'
 
 
@@ -76,7 +76,7 @@ class ChannelAdmin(admin.ModelAdmin):
     get_number_of_news_without_image.short_description = 'News W/O Image'
 
     def get_number_of_subscriber(self, obj):
-        return Subscriber.objects.filter(channel=obj).count()
+        return User.objects.filter(channel=obj).count()
     get_number_of_subscriber.short_description = 'Subscriber'
 
     def get_last_tweet(self, obj):
@@ -129,7 +129,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 @admin.register(User)
-class SubscriberAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
     list_display = ('IDFA', 'get_subscriber_id', 'get_number_of_subscriptions')
 
     def get_subscriber_id(self, obj):
@@ -149,3 +149,8 @@ class AdminHistory(admin.ModelAdmin):
 @admin.register(Bookmark)
 class AdminBookmark(admin.ModelAdmin):
     list_display = ('news', 'user', 'created_date')
+
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'channel')
