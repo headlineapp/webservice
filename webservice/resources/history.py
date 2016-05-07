@@ -25,4 +25,4 @@ class HistoryResource(ModelResource):
         return super(HistoryResource, self).\
             get_object_list(request).\
             distinct('news__id').\
-            exclude(url_title__isnull=True)
+            exclude(news__url_title__isnull=True)
