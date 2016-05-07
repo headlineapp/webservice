@@ -8,7 +8,7 @@ from tastypie.exceptions import ApiFieldError
 
 
 class SubscriberResource(ModelResource):
-    channel = fields.ToManyField(ChannelResource, 'channel', full=True, null=True, blank=)
+    channel = fields.ToManyField(ChannelResource, 'channel', full=True, null=True, blank=True)
 
     class Meta:
         queryset = Subscriber.objects.all()
