@@ -34,6 +34,7 @@ class Subscription(models.Model):
 
     class Meta:
         ordering = ('channel__name',)
+        unique_together = (('user', 'channel'),)
 
 
 class Category(models.Model):
