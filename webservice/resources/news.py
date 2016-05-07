@@ -22,7 +22,7 @@ class NewsResource(ModelResource):
     def get_object_list(self, request):
         IDFA = request.GET.get('IDFA')
         if IDFA:
-            channels = User.objects.filter(IDFA=IDFA).values_list('channel__id')
+            channels = Subscription.objects.filter(user__IDFA=IDFA).values_list('channel__id')
             return super(NewsResource, self).\
                 get_object_list(request).\
                 filter(channel__pk__in=channels).\
