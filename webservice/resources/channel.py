@@ -11,7 +11,7 @@ class ChannelResource(ModelResource):
 
     class Meta:
         queryset = Channel.objects.all()
-        resource_name = 'channel/all'
+        resource_name = 'channel'
         serializer = Serializer(formats=['json'])
         paginator_class = AutoPaginator
         filtering = {
