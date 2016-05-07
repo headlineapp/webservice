@@ -17,6 +17,6 @@ class HistoryResource(ModelResource):
         serializer = Serializer(formats=['json'])
         authorization = Authorization()
         filtering = {
-            'subscriber': ALL_WITH_RELATIONS,
+            'user': ALL_WITH_RELATIONS,
             'news': ALL_WITH_RELATIONS
         }

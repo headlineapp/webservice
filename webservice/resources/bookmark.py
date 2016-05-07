@@ -15,6 +15,6 @@ class BookmarkResource(ModelResource):
         resource_name = 'bookmark'
         serializer = Serializer(formats=['json'])
         filtering = {
-            'subscriber' : ALL_WITH_RELATIONS,
+            'user' : ALL_WITH_RELATIONS,
             'news' : ALL_WITH_RELATIONS
         }
