@@ -10,6 +10,7 @@ from webservice.resources.history import HistoryResource
 from webservice.resources.category import CategoryResource
 from webservice.resources.user import UserResource
 from webservice.resources.subscription import SubscriptionResource
+from webservice.views import recommended_channel
 
 admin.site.site_title = 'Headline API'
 admin.site.site_header = 'Headline API'
@@ -29,4 +30,5 @@ v1_api.register(CategoryResource())
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(v1_api.urls)),
+    url(r'^recommended-channel/', recommended_channel),
 ]

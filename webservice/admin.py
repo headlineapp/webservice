@@ -55,7 +55,7 @@ class ChannelAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
     def get_category(self, obj):
-        return ','.join([category.name for category in obj.category.all()])
+        return '\n'.join([category.name for category in obj.category.all()])
     get_category.short_description = 'Category'
 
     def get_url(self, obj):
