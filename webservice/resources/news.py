@@ -8,6 +8,7 @@ from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 
 class NewsResource(ModelResource):
     channel = fields.ForeignKey(ChannelResource, 'channel', full=True)
+    bookmark = fields.BooleanField(readonly=True)
 
     class Meta:
         queryset = News.objects.all()
@@ -32,5 +33,9 @@ class NewsResource(ModelResource):
                 get_object_list(request).\
                 exclude(url_title__isnull=True)
 
+    def dehydrate_bookmark(self, bundle):
+        IDFA = bundle.request.GET.get('IDFA')
+        subscription = Subscription.objects.filter(user__IDFA=IDFA).count()
+        return subscription
 
 
