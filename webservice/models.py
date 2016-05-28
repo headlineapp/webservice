@@ -40,7 +40,7 @@ class Subscription(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100)
     number_of_channel = models.IntegerField(default=0)
-    category_icon_url = models.CharField(max_length=300, default='')
+    category_icon_url = models.CharField(max_length=1000, default='')
 
     def __str__(self):
         return self.name
@@ -54,10 +54,10 @@ class Channel(models.Model):
     name = models.CharField(max_length=100, unique=True)
     tag_line = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=1000)
     twitter_screen_name = models.CharField(max_length=100)
-    profile_image_url = models.CharField(max_length=300)
-    url = models.CharField(max_length=300)
+    profile_image_url = models.CharField(max_length=1000)
+    url = models.CharField(max_length=1000)
     category = models.ManyToManyField(Category, blank=True, related_name='category')
     country = models.ManyToManyField(Country, blank=True)
     twitter_since_id = models.CharField(max_length=30, null=True, blank=True)
@@ -75,7 +75,7 @@ class News(models.Model):
     channel = models.ForeignKey(Channel, blank=True, null=True)
     url = models.CharField(max_length=2083)
     url_title = models.CharField(max_length=500, null=True, blank=True)
-    url_image = models.CharField(max_length=300, null=True, blank=True)
+    url_image = models.CharField(max_length=1000, null=True, blank=True)
     url_description = models.CharField(max_length=2000, null=True, blank=True)
     twitter_id = models.CharField(max_length=30)
     twitter_text = models.CharField(max_length=1200)
