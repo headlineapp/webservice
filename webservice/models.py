@@ -84,7 +84,7 @@ class News(models.Model):
     twitter_date_posted = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.twitter_id
+        return self.url_title
 
     def __unicode__(self):
         return u'%s' % self.url_title
