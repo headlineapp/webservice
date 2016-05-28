@@ -41,8 +41,11 @@ class NewsResource(ModelResource):
 
     def dehydrate_bookmark_uri(self, bundle):
         IDFA = bundle.request.GET.get('IDFA')
-        bookmark = Bookmark.objects.filter(user__IDFA=IDFA, news=bundle.obj)
-        return '/v1/bookmark/%s/' % bookmark.pk
+        bookmarks = Bookmark.objects.filter(user__IDFA=IDFA, news=bundle.obj)
+        if bookmarks.count() > 0:
+            return '/v1/bookmark/%s/' % bookmarks[0].pk
+        else:
+            return ''
 
 
 
