@@ -21,8 +21,3 @@ class HistoryResource(ModelResource):
             'news': ALL_WITH_RELATIONS
         }
 
-    def get_object_list(self, request):
-        return super(HistoryResource, self).\
-            get_object_list(request).\
-            distinct('news__id').\
-            exclude(news__url_title__isnull=True)

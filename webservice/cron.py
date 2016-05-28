@@ -1,18 +1,19 @@
 import re
-import requests
 
-from django_cron import CronJobBase, Schedule
-from django.db.models import Q
-from webservice.twitter import *
-from webservice.util import get_biggest_images
-from dateutil import parser
+import requests
 from bs4 import BeautifulSoup as bsoup
-from webservice.models import Channel, News, Category
+from dateutil import parser
+from django.db.models import Q
+from django_cron import CronJobBase, Schedule
+
 from headline.settings import \
     TWITTER_ACCESS_TOKEN, \
     TWITTER_CONSUMER_SECRET, \
     TWITTER_CONSUMER_KEY, \
     TWITTER_TOKEN_SECRET
+from webservice.models import Channel, News, Category
+from webservice.twitter import *
+from webservice.utils.image import get_biggest_images
 
 
 class TwitterCronJob(CronJobBase):

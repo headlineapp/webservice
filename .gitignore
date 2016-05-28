@@ -5,3 +5,4 @@ news.pyc
 subscriber.pyc
 local_settings.pyc
 views.pyc
+db.sqlite3

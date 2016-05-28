@@ -76,7 +76,7 @@ class ChannelAdmin(admin.ModelAdmin):
     get_number_of_news_without_image.short_description = 'News W/O Image'
 
     def get_number_of_subscriber(self, obj):
-        return User.objects.filter(channel=obj).count()
+        return Subscription.objects.filter(channel=obj).count()
     get_number_of_subscriber.short_description = 'Subscriber'
 
     def get_last_tweet(self, obj):
