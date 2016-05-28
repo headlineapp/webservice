@@ -19,3 +19,13 @@ class ChannelResource(ModelResource):
             'name': ALL,
             'category': ALL_WITH_RELATIONS,
         }
+
+    def get_object_list(self, request):
+        IDFA = request.GET.get('IDFA')
+        if IDFA:
+            channels = Subscription.objects.filter(user__IDFA=IDFA).values_list('channel__id')
+            return super(ChannelResource, self).\
+                get_object_list(request).\
+                exclude(channel__pk__in=channels)
+        else:
+            return super(ChannelResource, self).get_object_list(request)
