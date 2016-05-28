@@ -19,8 +19,9 @@ from webservice.utils.image import get_biggest_images
 class TwitterCronJob(CronJobBase):
 
     RUN_EVERY_MINUTES = 10
-    RETRY_AFTER_FAILURE_MINS = 5
+
     schedule = Schedule(run_every_mins=RUN_EVERY_MINUTES)
+
     code = 'webservice.cron.twitter_cron_job'
 
     def do(self):
