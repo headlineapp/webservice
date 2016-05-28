@@ -35,7 +35,7 @@ class NewsResource(ModelResource):
 
     def dehydrate_bookmark(self, bundle):
         IDFA = bundle.request.GET.get('IDFA')
-        subscription = Subscription.objects.filter(user__IDFA=IDFA).count()
+        subscription = Bookmark.objects.filter(user__IDFA=IDFA, news=bundle.obj).count()
         return subscription
 
 
