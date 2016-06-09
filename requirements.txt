@@ -1,0 +1,5 @@
+BeautifulSoup
+django-tastypie
+django-cron
+django-extensions
+requests
