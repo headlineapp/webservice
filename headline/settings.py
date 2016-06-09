@@ -117,8 +117,9 @@ STATIC_URL = 'http://static.getheadlineapp.com/'
 
 STATIC_ROOT = '/home/headline/webapps/static/'
 
-STATICFILES_DIRS = []
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Twitter Keys
 
