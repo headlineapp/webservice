@@ -159,20 +159,18 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/home/headline/logs/user/django.log',
-            },
+        'console': {
+            'class': 'logging.StreamHandler',
         },
+    },
     'loggers': {
-        'django_cron': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR'),
         },
     },
 }
+
 
 
 try:
