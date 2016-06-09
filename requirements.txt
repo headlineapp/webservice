@@ -1,5 +1,7 @@
-BeautifulSoup
-django-tastypie
+wheel==0.26.0
+Django
 django-cron
 django-extensions
+django-tastypie
 requests
+pytz
