@@ -35,4 +35,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(v1_api.urls)),
     url(r'^recommended-channel/', recommended_channel),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
